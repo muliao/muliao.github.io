@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Diary on Jane - A super concise theme for Hugo</title>
+    <link>https://muliao.github.io/categories/diary/</link>
+    <description>Recent content in Diary on Jane - A super concise theme for Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 09 Oct 2018 19:14:40 +0800</lastBuildDate>
+    
+	<atom:link href="https://muliao.github.io/categories/diary/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用github作为博客空间</title>
+      <link>https://muliao.github.io/post/first_page/</link>
+      <pubDate>Tue, 09 Oct 2018 19:14:40 +0800</pubDate>
+      
+      <guid>https://muliao.github.io/post/first_page/</guid>
+      <description>把搭建这个blog环境的攻略作为第一篇博客 完全按照自己的搭建过程描述 以下操作都是在win10的ubuntu子系统上进行 创建出github的b</description>
+    </item>
+    
+  </channel>
+</rss>
