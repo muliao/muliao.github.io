@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>使用github作为博客空间</title>
-      <link>https://muliao.github.io/post/first_page/</link>
+      <title>把搭建这个blog环境的攻略作为第一篇博客</title>
+      <link>https://muliao.github.io/post/how_to_create_blog/</link>
       <pubDate>Tue, 09 Oct 2018 19:14:40 +0800</pubDate>
       
-      <guid>https://muliao.github.io/post/first_page/</guid>
-      <description>把搭建这个blog环境的攻略作为第一篇博客 完全按照自己的搭建过程描述 以下操作都是在win10的ubuntu子系统上进行 创建出github的b</description>
+      <guid>https://muliao.github.io/post/how_to_create_blog/</guid>
+      <description>按照自己的搭建过程描述 以下操作都是在win10的ubuntu子系统上进行 创建出github的blog仓库 create repository 仓库名为 muliao.github.io 创建后访问https:</description>
     </item>
     
   </channel>

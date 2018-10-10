@@ -35,19 +35,18 @@
     </item>
     
     <item>
-      <title>使用github作为博客空间</title>
-      <link>https://muliao.github.io/post/first_page/</link>
+      <title>把搭建这个blog环境的攻略作为第一篇博客</title>
+      <link>https://muliao.github.io/post/how_to_create_blog/</link>
       <pubDate>Tue, 09 Oct 2018 19:14:40 +0800</pubDate>
       
-      <guid>https://muliao.github.io/post/first_page/</guid>
+      <guid>https://muliao.github.io/post/how_to_create_blog/</guid>
       
         <description>
 
-&lt;h1 id=&#34;把搭建这个blog环境的攻略作为第一篇博客&#34;&gt;把搭建这个blog环境的攻略作为第一篇博客&lt;/h1&gt;
-
 &lt;blockquote&gt;
-&lt;p&gt;完全按照自己的搭建过程描述
-以下操作都是在win10的ubuntu子系统上进行&lt;/p&gt;
+&lt;p&gt;按照自己的搭建过程描述&lt;/p&gt;
+
+&lt;p&gt;以下操作都是在win10的ubuntu子系统上进行&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&#34;创建出github的blog仓库&#34;&gt;创建出github的blog仓库&lt;/h2&gt;
@@ -62,7 +61,7 @@
 
 &lt;p&gt;在我们开始之前，我们应该检查我们的Ubuntu机器的架构，以便我们可以确保下载正确的软件包。 在服务器上，键入：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ uname -i
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ uname -i
 x86_64
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -74,7 +73,7 @@ x86_64
 
 &lt;p&gt;下载:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ wget ttps://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ wget ttps://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
 $ sudo dpkg -i hugo_0.49_Linux-64bit.deb
 $ hugo version
 Hugo Static Site Generator v0.49 linux/amd64 BuildDate: 2018-09-24T10:03:17Z
@@ -82,7 +81,148 @@ Hugo Static Site Generator v0.49 linux/amd64 BuildDate: 2018-09-24T10:03:17Z
 
 &lt;p&gt;指令输出的版本正确的话，说明安装完成了&lt;/p&gt;
 
-&lt;h2 id=&#34;使用jame主题&#34;&gt;使用Jame主题&lt;/h2&gt;
+&lt;h2 id=&#34;使用jane主题&#34;&gt;使用Jane主题&lt;/h2&gt;
+
+&lt;p&gt;jane主题地址 &lt;a href=&#34;https://github.com/xianmin/hugo-theme-jane&#34;&gt;https://github.com/xianmin/hugo-theme-jane&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;按照上面的介绍搭建一个基本的blog框架&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ hugo new site muliao_blog
+$ cd muliao_blog
+$ git clone https://github.com/xianmin/hugo-theme-jane.git --depth=1 themes/jane
+$ cp -r themes/jane/exampleSite/content ./
+$ cp themes/jane/exampleSite/config.toml ./
+$ hugo server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此时就启动了一个带有例子的blog了,通过访问 &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt; 可以看到一些博客用例了。&lt;/p&gt;
+
+&lt;p&gt;自己搭建的时候发现用例上的代码高亮和jane官网上的不一样效果，折腾了很久都没发现哪里有问题。&lt;/p&gt;
+
+&lt;p&gt;通过其他途径解决这个难题，还好发现了以下这个地方
+&lt;a href=&#34;http://note.qidong.name/2017/06/24/hugo-highlight/&#34;&gt;http://note.qidong.name/2017/06/24/hugo-highlight/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;修改themes/jane/layouts/partials/custom_head.html,增加以下内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-HTML&#34;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css&amp;quot;&amp;gt;
+&amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;hljs.initHighlightingOnLoad();&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;比较好的解决了代码格式/高亮的问题，可以通过
+&lt;a href=&#34;http://highlightjs.org/&#34;&gt;http://highlightjs.org/&lt;/a&gt;
+上面的介绍来做选择不同的风格&lt;/p&gt;
+
+&lt;h2 id=&#34;添加评论&#34;&gt;添加评论&lt;/h2&gt;
+
+&lt;p&gt;Hugo没有内置评论功能，要增加评论功能需要集成第三方评论服务，比如国外最流行的Disqus。hugo主题内置了disqus评论插件，不过需要你按如下操作配置一下，否则页面下方的disqus插件总是显示无法连接。&lt;/p&gt;
+
+&lt;p&gt;获取disqusShortname&lt;/p&gt;
+
+&lt;p&gt;1.注册disqus&lt;/p&gt;
+
+&lt;p&gt;官网注册帐号 &lt;a href=&#34;https://disqus.com/&#34;&gt;https://disqus.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这里用disqus主账号不行，需要用主账号login后：add a newsite to disqus，比如加入muliao.disqus.com，这样你的disqusShortname就为muliao&lt;/p&gt;
+
+&lt;p&gt;创建选择installation平台的配置时选择universal code,然后
+将生成的code放到覆盖到themes/jane/layouts/partials/comments.html中&lt;/p&gt;
+
+&lt;p&gt;在config.toml中配置disqusShortname:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;disqusShortname = &amp;quot;muliao&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此时打开刚刚的用例博客，就可以看到底部可以评论了&lt;/p&gt;
+
+&lt;p&gt;可以对某篇博文单独关闭disqus功能。如test.md&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;---
+Categories = [&amp;quot;test&amp;quot;]
+Description = &amp;quot;test&amp;quot;
+Tags = [&amp;quot;test&amp;quot;]
+title = &amp;quot;test hugo&amp;quot;
+comments = false      #这里的comments取值为false，disqus则不可见
+---
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然在 &lt;a href=&#34;https://disqus.com&#34;&gt;https://disqus.com&lt;/a&gt; 也可以管理这些评论&lt;/p&gt;
+
+&lt;h2 id=&#34;可以创作自己的博客了&#34;&gt;可以创作自己的博客了&lt;/h2&gt;
+
+&lt;p&gt;这时可以删除掉content/post下面的所有的用例博客了，要建立自己的内容了。&lt;/p&gt;
+
+&lt;p&gt;新建一个how_to_create_a_blog.md文件,写入本篇文章(当然是用md格式)&lt;/p&gt;
+
+&lt;p&gt;修改config.toml为自己的配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ hugo server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;访问本地服务就可以看到自己的这篇文章了，觉得没问题，就可以发布到github上了。&lt;/p&gt;
+
+&lt;h2 id=&#34;发布博客到自己的github上&#34;&gt;发布博客到自己的github上&lt;/h2&gt;
+
+&lt;p&gt;在最前面已经创建好了仓库了,现在只要克隆到muliao_blug/public目录下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd muliao_blog
+$ git clone https://github.com/muliao/muliao.github.io.git public
+$ hugo
+$ cd public
+$ git add .
+$ git commit -m &#39;发表了第一篇文章&#39;
+$ git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;hugo指令生成静态页面到public，此时上传这些文件即可&lt;/p&gt;
+
+&lt;p&gt;访问 &lt;a href=&#34;https://muliao.github.io&#34;&gt;https://muliao.github.io&lt;/a&gt; 是不是可以看到自己的文章了呢。&lt;/p&gt;
+
+&lt;h2 id=&#34;弄一个趁手的写博客工具&#34;&gt;弄一个趁手的写博客工具&lt;/h2&gt;
+
+&lt;p&gt;使用atom可以方便的边写md格式边预览,就选他了&lt;/p&gt;
+
+&lt;p&gt;安装atom,然后下载相关的一些好用的插件&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/atom-community/markdown-preview-plus&#34;&gt;https://github.com/atom-community/markdown-preview-plus&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Atom自带的Markdown预览插件markdown-preview功能比较简单，markdown-preview-plus对其做了功能扩展和增强。&lt;/p&gt;
+
+&lt;p&gt;打开/关闭实时预览 Ctrl + Shift + M&lt;/p&gt;
+
+&lt;p&gt;勾选Preview position synchronization behaviour下的三个选项，实现预览同步滚动。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/burodepeper/language-markdown&#34;&gt;https://github.com/burodepeper/language-markdown&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;代码编辑增强插件&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/nmecad/markdown-img-paste&#34;&gt;https://github.com/nmecad/markdown-img-paste&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;使用截图工具将图片复制到系统剪切板。&lt;/p&gt;
+
+&lt;p&gt;在Markdown新起一行输入文件名。&lt;/p&gt;
+
+&lt;p&gt;Ctrl + V 会自动把图片保存到Markdown文件相同目录下(因此要求Markdown文件应该先保存)，并命名为刚输入的文件名，同时在刚才输入文件名行处生成img标签。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/susisu/atom-markdown-table-editor&#34;&gt;https://github.com/susisu/atom-markdown-table-editor&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;表格编辑辅助，有了他写表格更方便&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/platformio/platformio-atom-ide-terminal&#34;&gt;https://github.com/platformio/platformio-atom-ide-terminal&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ctrl + ` 打开/隐藏终端窗口&lt;/p&gt;
+
+&lt;p&gt;可以方便的输入hugo server来启动服务测试，也方便git发布&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://atom.io/packages/atom-timestamp&#34;&gt;https://atom.io/packages/atom-timestamp&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;每篇的博客开头带有lastmod的时间，表示最后修改的时间，使用这个插件可以在你保存的时候把这个时间更新掉，方便的很。&lt;/p&gt;
+
+&lt;p&gt;为了匹配格式，需要修改配置&lt;/p&gt;
+
+&lt;p&gt;TimeStamp Preifx 设置 lastmod:[ \t]+&lt;/p&gt;
+
+&lt;p&gt;TimeStamp Suffix 设置 $&lt;/p&gt;
 </description>
       
     </item>
