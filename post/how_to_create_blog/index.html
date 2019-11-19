@@ -1,646 +1,274 @@
 <!DOCTYPE html>
-<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>把搭建这个blog环境的攻略作为第一篇博客 - Jane - A super concise theme for Hugo</title>
-  
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Muliao&#39;s Blog  | 把搭建这个blog环境的攻略作为第一篇博客</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.59.1" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
 
-<meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
 
-<meta name="MobileOptimized" content="width"/>
-<meta name="HandheldFriendly" content="true"/>
+    
 
+    
+      
+    
 
-<meta name="applicable-device" content="pc,mobile">
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    
+    
+    <meta property="og:title" content="把搭建这个blog环境的攻略作为第一篇博客" />
+<meta property="og:description" content="记录下这个简单的blog环境的搭建过程。
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+使用hugo &#43; ananke主题
 
-<meta name="mobile-web-app-capable" content="yes">
-
-<meta name="author" content="muliao" />
-  <meta name="description" content="按照自己的搭建过程描述 以下操作都是在win10的ubuntu子系统上进行 创建出github的blog仓库 create repository 仓库名为 muliao.github.io 创建后访问https:" />
-
-  <meta name="keywords" content="Hugo, theme, jane" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.49" />
-
-
-<link rel="canonical" href="https://muliao.github.io/post/how_to_create_blog/" />
-
-
-
-<link rel="icon" href="/favicon.ico" />
-
-
-
-
-
-
-
-
-
-
-<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
-
-
-
-
-<meta property="og:title" content="把搭建这个blog环境的攻略作为第一篇博客" />
-<meta property="og:description" content="按照自己的搭建过程描述 以下操作都是在win10的ubuntu子系统上进行 创建出github的blog仓库 create repository 仓库名为 muliao.github.io 创建后访问https:" />
+对它的预期是希望做到几点就好。1：支持makedown格式编辑；2：支持代码高亮；3：支持大纲；4：支持评论；5：简单的发布" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://muliao.github.io/post/how_to_create_blog/" /><meta property="article:published_time" content="2018-10-09T19:14:40&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-10T18:39:14&#43;08:00"/>
-
+<meta property="og:url" content="https://example.com/post/how_to_create_blog/" />
+<meta property="article:published_time" content="2018-10-09T19:14:40+08:00" />
+<meta property="article:modified_time" content="2019-11-19T15:45:35+08:00" />
 <meta itemprop="name" content="把搭建这个blog环境的攻略作为第一篇博客">
-<meta itemprop="description" content="按照自己的搭建过程描述 以下操作都是在win10的ubuntu子系统上进行 创建出github的blog仓库 create repository 仓库名为 muliao.github.io 创建后访问https:">
+<meta itemprop="description" content="记录下这个简单的blog环境的搭建过程。
+
+使用hugo &#43; ananke主题
+
+对它的预期是希望做到几点就好。1：支持makedown格式编辑；2：支持代码高亮；3：支持大纲；4：支持评论；5：简单的发布">
 
 
 <meta itemprop="datePublished" content="2018-10-09T19:14:40&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-09T19:14:40&#43;08:00" />
-<meta itemprop="wordCount" content="1846">
+<meta itemprop="dateModified" content="2019-11-19T15:45:35&#43;08:00" />
+<meta itemprop="wordCount" content="85">
 
 
 
-<meta itemprop="keywords" content="github,hugo,jane,diary," />
+<meta itemprop="keywords" content="ananke,hugo,diary," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="把搭建这个blog环境的攻略作为第一篇博客"/>
-<meta name="twitter:description" content="按照自己的搭建过程描述 以下操作都是在win10的ubuntu子系统上进行 创建出github的blog仓库 create repository 仓库名为 muliao.github.io 创建后访问https:"/>
+<meta name="twitter:description" content="记录下这个简单的blog环境的搭建过程。
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
+使用hugo &#43; ananke主题
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+对它的预期是希望做到几点就好。1：支持makedown格式编辑；2：支持代码高亮；3：支持大纲；4：支持评论；5：简单的发布"/>
 
+  </head>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+  <body class="ma0 avenir bg-near-white">
 
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Muliao</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/">This is Home</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/post/">Archives</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/tags/">Tags</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/categories/">Categories</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/about/">About</a>
-          
-        
-      </li>
     
-  </ul>
+   
+  
+
+  <header>
+    <div class="bg-blue">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://example.com" class="f3 fw2 hover-white no-underline white-90 dib">
+      Muliao&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
 </nav>
 
-
-  
-    
-
-
-
-
-
-
-  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
-  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
-
-
-
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
     </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
-
-  
-
-  
-
-  <header id="header" class="header container">
-    <div class="logo-wrapper">
-  <a href="/" class="logo">
-    
-      Muliao
-    
-  </a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    
-      <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/">This is Home</a>
-          
-
-        
-
-      </li>
-    
-      <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/post/">Archives</a>
-          
-
-        
-
-      </li>
-    
-      <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/tags/">Tags</a>
-          
-
-        
-
-      </li>
-    
-      <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/categories/">Categories</a>
-          
-
-        
-
-      </li>
-    
-      <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://muliao.github.io/about/">About</a>
-          
-
-        
-
-      </li>
-    
-    
-  </ul>
-</nav>
-
   </header>
 
-  <div id="mobile-panel">
-    <main id="main" class="main bg-llight">
-      <div class="content-wrapper">
-        <div id="content" class="content container">
-          <article class="post bg-white">
-    
-    <header class="post-header">
-      <h1 class="post-title">把搭建这个blog环境的攻略作为第一篇博客</h1>
+
+
+    <main class="pb7" role="main">
       
-      <div class="post-meta">
-        <span class="post-time"> 2018-10-09 </span>
-        <div class="post-category">
-            <a href="https://muliao.github.io/categories/diary/"> diary </a>
-            
-          </div>
-        
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
 
-        
-        
-
-        
-        
-      </div>
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        ARTICLES
+      </p>
+      <h1 class="f1 athelas mb1">把搭建这个blog环境的攻略作为第一篇博客</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2018-10-09T19:14:40&#43;08:00">October 9, 2018</time>
+      
+      
+        <span class="f6 mv4 dib tracked"> - 1 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 85 words</span>
+      
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#创建出github的blog仓库">创建出github的blog仓库</a></li>
-<li><a href="#使用hugo作为博客页面生成工具">使用hugo作为博客页面生成工具</a></li>
-<li><a href="#使用jane主题">使用Jane主题</a></li>
-<li><a href="#添加评论">添加评论</a></li>
-<li><a href="#可以创作自己的博客了">可以创作自己的博客了</a></li>
-<li><a href="#发布博客到自己的github上">发布博客到自己的github上</a></li>
-<li><a href="#弄一个趁手的写博客工具">弄一个趁手的写博客工具</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>记录下这个简单的blog环境的搭建过程。</p>
 
-    
-    <div class="post-content">
-      
+<p>使用hugo + ananke主题</p>
 
-<blockquote>
-<p>按照自己的搭建过程描述</p>
+<p>对它的预期是希望做到几点就好。1：支持makedown格式编辑；2：支持代码高亮；3：支持大纲；4：支持评论；5：简单的发布</p>
 
-<p>以下操作都是在win10的ubuntu子系统上进行</p>
-</blockquote>
+<h2 id="hugo搭建">hugo搭建</h2>
 
-<h2 id="创建出github的blog仓库">创建出github的blog仓库</h2>
+<p>之前按照jane搭建的,一年后重新用时发现会报错，决定还是用教程推荐的ananke主题</p>
 
-<p>create repository</p>
+<p>参考hugo的<a href="https://gohugo.io/getting-started/quick-start/">quick start</a>进行安装和新建站点</p>
 
-<p>仓库名为 <code>muliao.github.io</code></p>
+<p>参考sample里面的config.tom,做些简单的配置就可以支持自己写点简单的记录了。</p>
 
-<p>创建后访问<a href="https://muliao.github.io就可以看到一个空页面了">https://muliao.github.io就可以看到一个空页面了</a></p>
+<p>修改config.tom中的个人定制信息</p>
 
-<h2 id="使用hugo作为博客页面生成工具">使用hugo作为博客页面生成工具</h2>
+<p>做一些必要功能的修改</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#34;zh-cn&#34;</span>  <span style="color:#75715e">#默认中文</span>
+<span style="color:#a6e22e">DefaultContentLanguage</span> = <span style="color:#e6db74">&#34;cn&#34;</span> <span style="color:#75715e">#默认中文</span>
+<span style="color:#a6e22e">Paginate</span> = <span style="color:#ae81ff">10</span> <span style="color:#75715e">#一次多显示一些dummy contetn</span>
 
-<p>在我们开始之前，我们应该检查我们的Ubuntu机器的架构，以便我们可以确保下载正确的软件包。 在服务器上，键入：</p>
+[<span style="color:#a6e22e">params</span>]
+  <span style="color:#a6e22e">recent_posts_number</span> = <span style="color:#ae81ff">5</span> <span style="color:#75715e">#多显示一些</span>
+  <span style="color:#a6e22e">commentoEnable</span> = <span style="color:#66d9ef">true</span> <span style="color:#75715e">#打开评论</span>
+  <span style="color:#a6e22e">show_reading_time</span> = <span style="color:#66d9ef">true</span>  <span style="color:#75715e">#显示字数</span>
+  <span style="color:#a6e22e">background_color_class</span> = <span style="color:#e6db74">&#34;bg-blue&#34;</span>  <span style="color:#75715e">#显示背景颜色</span></code></pre></div>
+<h2 id="预览测试">预览测试</h2>
 
-<pre><code class="language-sh">$ uname -i
-x86_64
-</code></pre>
-
-<p>说明服务器是ubuntu 64位,</p>
-
-<p>进入 <a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a> 寻找hugo的64位最新版本</p>
-
-<p>这时找到的最新版本的地址是<a href="https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb">https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb</a></p>
-
-<p>下载:</p>
-
-<pre><code class="language-sh">$ wget ttps://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
-$ sudo dpkg -i hugo_0.49_Linux-64bit.deb
-$ hugo version
-Hugo Static Site Generator v0.49 linux/amd64 BuildDate: 2018-09-24T10:03:17Z
-</code></pre>
-
-<p>指令输出的版本正确的话，说明安装完成了</p>
-
-<h2 id="使用jane主题">使用Jane主题</h2>
-
-<p>jane主题地址 <a href="https://github.com/xianmin/hugo-theme-jane">https://github.com/xianmin/hugo-theme-jane</a></p>
-
-<p>按照上面的介绍搭建一个基本的blog框架</p>
-
-<pre><code class="language-sh">$ hugo new site muliao_blog
-$ cd muliao_blog
-$ git clone https://github.com/xianmin/hugo-theme-jane.git --depth=1 themes/jane
-$ cp -r themes/jane/exampleSite/content ./
-$ cp themes/jane/exampleSite/config.toml ./
-$ hugo server
-</code></pre>
-
-<p>此时就启动了一个带有例子的blog了,通过访问 <a href="http://localhost:1313">http://localhost:1313</a> 可以看到一些博客用例了。</p>
-
-<p>自己搭建的时候发现用例上的代码高亮和jane官网上的不一样效果，折腾了很久都没发现哪里有问题。</p>
-
-<p>通过其他途径解决这个难题，还好发现了以下这个地方
-<a href="http://note.qidong.name/2017/06/24/hugo-highlight/">http://note.qidong.name/2017/06/24/hugo-highlight/</a></p>
-
-<p>修改themes/jane/layouts/partials/custom_head.html,增加以下内容</p>
-
-<pre><code class="language-HTML">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css&quot;&gt;
-&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
-</code></pre>
-
-<p>比较好的解决了代码格式/高亮的问题，可以通过
-<a href="http://highlightjs.org/">http://highlightjs.org/</a>
-上面的介绍来做选择不同的风格</p>
-
-<h2 id="添加评论">添加评论</h2>
-
-<p>Hugo没有内置评论功能，要增加评论功能需要集成第三方评论服务，比如国外最流行的Disqus。hugo主题内置了disqus评论插件，不过需要你按如下操作配置一下，否则页面下方的disqus插件总是显示无法连接。</p>
-
-<p>获取disqusShortname</p>
-
-<p>1.注册disqus</p>
-
-<p>官网注册帐号 <a href="https://disqus.com/">https://disqus.com/</a></p>
-
-<p>这里用disqus主账号不行，需要用主账号login后：add a newsite to disqus，比如加入muliao.disqus.com，这样你的disqusShortname就为muliao</p>
-
-<p>创建选择installation平台的配置时选择universal code,然后
-将生成的code放到覆盖到themes/jane/layouts/partials/comments.html中</p>
-
-<p>在config.toml中配置disqusShortname:</p>
-
-<pre><code class="language-toml">disqusShortname = &quot;muliao&quot;
-</code></pre>
-
-<p>此时打开刚刚的用例博客，就可以看到底部可以评论了</p>
-
-<p>可以对某篇博文单独关闭disqus功能。如test.md</p>
-
-<pre><code class="language-markdown">---
-Categories = [&quot;test&quot;]
-Description = &quot;test&quot;
-Tags = [&quot;test&quot;]
-title = &quot;test hugo&quot;
-comments = false      #这里的comments取值为false，disqus则不可见
----
-</code></pre>
-
-<p>当然在 <a href="https://disqus.com">https://disqus.com</a> 也可以管理这些评论</p>
-
-<h2 id="可以创作自己的博客了">可以创作自己的博客了</h2>
-
-<p>这时可以删除掉content/post下面的所有的用例博客了，要建立自己的内容了。</p>
-
-<p>新建一个how_to_create_a_blog.md文件,写入本篇文章(当然是用md格式)</p>
-
-<p>修改config.toml为自己的配置</p>
-
-<pre><code class="language-sh">$ hugo server
-</code></pre>
-
-<p>访问本地服务就可以看到自己的这篇文章了，觉得没问题，就可以发布到github上了。</p>
-
+<p>执行下面指令，然后访问 <a href="http://localhost:1313">http://localhost:1313</a> 来预览</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo -D server</code></pre></div>
 <h2 id="发布博客到自己的github上">发布博客到自己的github上</h2>
 
 <p>在最前面已经创建好了仓库了,现在只要克隆到muliao_blug/public目录下</p>
-
-<pre><code class="language-sh">$ cd muliao_blog
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd muliao_blog
 $ git clone https://github.com/muliao/muliao.github.io.git public
 $ hugo
 $ cd public
 $ git add .
-$ git commit -m '发表了第一篇文章'
-$ git push
-</code></pre>
-
+$ git commit -m <span style="color:#e6db74">&#39;发表了第一篇文章&#39;</span>
+$ git push</code></pre></div>
 <p>hugo指令生成静态页面到public，此时上传这些文件即可</p>
 
 <p>访问 <a href="https://muliao.github.io">https://muliao.github.io</a> 是不是可以看到自己的文章了呢。</p>
 
 <h2 id="弄一个趁手的写博客工具">弄一个趁手的写博客工具</h2>
 
-<p>使用atom可以方便的边写md格式边预览,就选他了</p>
+<p>之前使用atom,今年以来用vscode更多一些，也就转过来了。</p>
 
-<p>安装atom,然后下载相关的一些好用的插件</p>
+<p>安装<a href="https://marketplace.visualstudio.com/items?itemName=rusnasonov.vscode-hugo">hogo helper</a>插件，参考这里的指令说明即可。</p>
 
-<p><a href="https://github.com/atom-community/markdown-preview-plus">https://github.com/atom-community/markdown-preview-plus</a></p>
-
-<p>Atom自带的Markdown预览插件markdown-preview功能比较简单，markdown-preview-plus对其做了功能扩展和增强。</p>
-
-<p>打开/关闭实时预览 Ctrl + Shift + M</p>
-
-<p>勾选Preview position synchronization behaviour下的三个选项，实现预览同步滚动。</p>
-
-<p><a href="https://github.com/burodepeper/language-markdown">https://github.com/burodepeper/language-markdown</a></p>
-
-<p>代码编辑增强插件</p>
-
-<p><a href="https://github.com/nmecad/markdown-img-paste">https://github.com/nmecad/markdown-img-paste</a></p>
-
-<p>使用截图工具将图片复制到系统剪切板。</p>
-
-<p>在Markdown新起一行输入文件名。</p>
-
-<p>Ctrl + V 会自动把图片保存到Markdown文件相同目录下(因此要求Markdown文件应该先保存)，并命名为刚输入的文件名，同时在刚才输入文件名行处生成img标签。</p>
-
-<p><a href="https://github.com/susisu/atom-markdown-table-editor">https://github.com/susisu/atom-markdown-table-editor</a></p>
-
-<p>表格编辑辅助，有了他写表格更方便</p>
-
-<p><a href="https://github.com/platformio/platformio-atom-ide-terminal">https://github.com/platformio/platformio-atom-ide-terminal</a></p>
-
-<p>Ctrl + ` 打开/隐藏终端窗口</p>
-
-<p>可以方便的输入hugo server来启动服务测试，也方便git发布</p>
-
-<p><a href="https://atom.io/packages/atom-timestamp">https://atom.io/packages/atom-timestamp</a></p>
-
-<p>每篇的博客开头带有lastmod的时间，表示最后修改的时间，使用这个插件可以在你保存的时候把这个时间更新掉，方便的很。</p>
-
-<p>为了匹配格式，需要修改配置</p>
-
-<p>TimeStamp Preifx 设置 lastmod:[ \t]+</p>
-
-<p>TimeStamp Suffix 设置 $</p>
-
-    </div>
-
-    
-    
-<div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">文章作者</span>
-    <span class="item-content">muliao</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2018-10-10</span>
-  </p>
+<p>这篇就是这么改完的。</p><ul class="pa0">
   
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
-</div>
-
-    
-    
-
-    <footer class="post-footer">
-      <div class="post-tags">
-          <a href="https://muliao.github.io/tags/github/">github</a>
-          <a href="https://muliao.github.io/tags/hugo/">hugo</a>
-          <a href="https://muliao.github.io/tags/jane/">jane</a>
-          <a href="https://muliao.github.io/tags/diary/">diary</a>
-          
-        </div>
-
+   <li class="list">
+     <a href="/tags/ananke" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">ananke</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/hugo" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">hugo</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/diary" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">diary</a>
+   </li>
+  
+</ul>
+<div class="mt6">
       
-      <nav class="post-nav">
-        
-        
-      </nav>
-    </footer>
+      <div id="commento"></div>
+<script defer src="https://cdn.commento.io/js/commento.js"></script>
+
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">What&#39;s in this post</p>
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#hugo搭建">hugo搭建</a></li>
+<li><a href="#预览测试">预览测试</a></li>
+<li><a href="#发布博客到自己的github上">发布博客到自己的github上</a></li>
+<li><a href="#弄一个趁手的写博客工具">弄一个趁手的写博客工具</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+
+
+
+
+</aside>
+
   </article>
 
-  
-  <div id="disqus_thread"></div>
-<script>
-
-
-
-
-
-(function() { 
-var d = document, s = d.createElement('script');
-s.src = 'https://muliao.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-        </div>
-      </div>
     </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:shijintao1980@163.com" rel="me noopener" class="iconfont icon-email"
-        title="email">
-      </a>
-  <a href="https://muliao.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
-    title="rss" target="_blank">
+    <footer class="bg-blue bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://example.com" >
+    &copy; 2019 Muliao&#39;s Blog
   </a>
-  </div>
+    <div>
 
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
-  </span>
 
-  <span class="copyright-year">
-    &copy;
-    
-      2017 -
-    2018
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span><span class="author">
-        muliao
-        
-      </span></span>
 
-  
-  
+
+
+
+
+
+
+
+
 </div>
-
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
   </div>
-  
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
 
 
-
-
-
-  
-    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
-    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
-    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
-  
-
-
-
-
-
-
-
-
-
-
-
-</body>
+  </body>
 </html>

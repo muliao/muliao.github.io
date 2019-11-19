@@ -1,49 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Jane - A super concise theme for Hugo</title>
-    <link>https://muliao.github.io/tags/</link>
-    <description>Recent content in Tags on Jane - A super concise theme for Hugo</description>
+    <title>Tags on Muliao&#39;s Blog</title>
+    <link>https://example.com/tags/</link>
+    <description>Recent content in Tags on Muliao&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 09 Oct 2018 19:14:40 +0800</lastBuildDate>
     
-	<atom:link href="https://muliao.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Diary</title>
-      <link>https://muliao.github.io/tags/diary/</link>
+      <title>ananke</title>
+      <link>https://example.com/tags/ananke/</link>
       <pubDate>Tue, 09 Oct 2018 19:14:40 +0800</pubDate>
       
-      <guid>https://muliao.github.io/tags/diary/</guid>
+      <guid>https://example.com/tags/ananke/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Github</title>
-      <link>https://muliao.github.io/tags/github/</link>
+      <title>diary</title>
+      <link>https://example.com/tags/diary/</link>
       <pubDate>Tue, 09 Oct 2018 19:14:40 +0800</pubDate>
       
-      <guid>https://muliao.github.io/tags/github/</guid>
+      <guid>https://example.com/tags/diary/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Hugo</title>
-      <link>https://muliao.github.io/tags/hugo/</link>
+      <title>hugo</title>
+      <link>https://example.com/tags/hugo/</link>
       <pubDate>Tue, 09 Oct 2018 19:14:40 +0800</pubDate>
       
-      <guid>https://muliao.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jane</title>
-      <link>https://muliao.github.io/tags/jane/</link>
-      <pubDate>Tue, 09 Oct 2018 19:14:40 +0800</pubDate>
-      
-      <guid>https://muliao.github.io/tags/jane/</guid>
+      <guid>https://example.com/tags/hugo/</guid>
       <description></description>
     </item>
     
