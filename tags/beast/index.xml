@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>beast on Muliao&#39;s Blog</title>
+    <link>https://muliao.github.io/tags/beast/</link>
+    <description>Recent content in beast on Muliao&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 20 Nov 2019 17:07:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://muliao.github.io/tags/beast/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>翻译boost.beast websocket部分文档</title>
+      <link>https://muliao.github.io/post/translate_boost_beast_websocket/</link>
+      <pubDate>Wed, 20 Nov 2019 17:07:04 +0800</pubDate>
+      
+      <guid>https://muliao.github.io/post/translate_boost_beast_websocket/</guid>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+
+&lt;p&gt;准备使用boost.beast库的websocket,边看文档边翻译，在此记录下。&lt;/p&gt;
+
+&lt;p&gt;使用的是boost 1_68_0版本&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

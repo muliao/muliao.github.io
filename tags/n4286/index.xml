@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>n4286 on Muliao&#39;s Blog</title>
+    <link>https://muliao.github.io/tags/n4286/</link>
+    <description>Recent content in n4286 on Muliao&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 19 Nov 2019 16:23:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://muliao.github.io/tags/n4286/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Translate_n4286_into_chinese</title>
+      <link>https://muliao.github.io/post/translate_n4286/</link>
+      <pubDate>Tue, 19 Nov 2019 16:23:18 +0800</pubDate>
+      
+      <guid>https://muliao.github.io/post/translate_n4286/</guid>
+      <description>已经翻译完毕，准备记录过来。。。</description>
+    </item>
+    
+  </channel>
+</rss>

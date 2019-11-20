@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Articles on Muliao&#39;s Blog</title>
-    <link>https://muliao.github.io/post/</link>
-    <description>Recent content in Articles on Muliao&#39;s Blog</description>
+    <title>c&#43;&#43; on Muliao&#39;s Blog</title>
+    <link>https://muliao.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in c&#43;&#43; on Muliao&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 19 Nov 2019 14:44:33 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Nov 2019 17:07:04 +0800</lastBuildDate>
     
-	<atom:link href="https://muliao.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://muliao.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -31,19 +31,6 @@
       
       <guid>https://muliao.github.io/post/translate_n4286/</guid>
       <description>已经翻译完毕，准备记录过来。。。</description>
-    </item>
-    
-    <item>
-      <title>把搭建这个blog环境的攻略作为第一篇博客</title>
-      <link>https://muliao.github.io/post/how_to_create_blog/</link>
-      <pubDate>Tue, 09 Oct 2018 19:14:40 +0800</pubDate>
-      
-      <guid>https://muliao.github.io/post/how_to_create_blog/</guid>
-      <description>&lt;p&gt;记录下这个简单的blog环境的搭建过程。&lt;/p&gt;
-
-&lt;p&gt;使用hugo + ananke主题&lt;/p&gt;
-
-&lt;p&gt;对它的预期是希望做到几点就好。1：支持makedown格式编辑；2：支持代码高亮；3：支持大纲；4：支持评论；5：简单的发布&lt;/p&gt;</description>
     </item>
     
   </channel>
