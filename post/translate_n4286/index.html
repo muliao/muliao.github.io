@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Muliao&#39;s Blog  | Translate_n4286_into_chinese</title>
+    <title>Muliao&#39;s Blog  | 翻译协议n4286</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="generator" content="Hugo 0.59.1" />
     
@@ -25,26 +25,32 @@
 
     
     
-    <meta property="og:title" content="Translate_n4286_into_chinese" />
-<meta property="og:description" content="已经翻译完毕，准备记录过来。。。" />
+    <meta property="og:title" content="翻译协议n4286" />
+<meta property="og:description" content="在了解c&#43;&#43;协程时发现了整个文档，读完让自己对协程的了解更清晰了，解开了之前的不少迷惑。
+
+边翻译边读的，把翻译的内容分享到这边。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://muliao.github.io/post/translate_n4286/" />
 <meta property="article:published_time" content="2019-11-19T16:23:18+08:00" />
-<meta property="article:modified_time" content="2019-11-19T16:23:18+08:00" />
-<meta itemprop="name" content="Translate_n4286_into_chinese">
-<meta itemprop="description" content="已经翻译完毕，准备记录过来。。。">
+<meta property="article:modified_time" content="2019-11-30T22:36:04+08:00" />
+<meta itemprop="name" content="翻译协议n4286">
+<meta itemprop="description" content="在了解c&#43;&#43;协程时发现了整个文档，读完让自己对协程的了解更清晰了，解开了之前的不少迷惑。
+
+边翻译边读的，把翻译的内容分享到这边。">
 
 
 <meta itemprop="datePublished" content="2019-11-19T16:23:18&#43;08:00" />
-<meta itemprop="dateModified" content="2019-11-19T16:23:18&#43;08:00" />
-<meta itemprop="wordCount" content="1">
+<meta itemprop="dateModified" content="2019-11-30T22:36:04&#43;08:00" />
+<meta itemprop="wordCount" content="6578">
 
 
 
 <meta itemprop="keywords" content="n4286,翻译,协程,c&#43;&#43;," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Translate_n4286_into_chinese"/>
-<meta name="twitter:description" content="已经翻译完毕，准备记录过来。。。"/>
+<meta name="twitter:title" content="翻译协议n4286"/>
+<meta name="twitter:description" content="在了解c&#43;&#43;协程时发现了整个文档，读完让自己对协程的了解更清晰了，解开了之前的不少迷惑。
+
+边翻译边读的，把翻译的内容分享到这边。"/>
 
   </head>
 
@@ -125,19 +131,1101 @@
           
         ARTICLES
       </p>
-      <h1 class="f1 athelas mb1">Translate_n4286_into_chinese</h1>
+      <h1 class="f1 athelas mb1">翻译协议n4286</h1>
       
       
       <time class="f6 mv4 dib tracked" datetime="2019-11-19T16:23:18&#43;08:00">November 19, 2019</time>
       
       
-        <span class="f6 mv4 dib tracked"> - 1 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 1 words</span>
+        <span class="f6 mv4 dib tracked"> - 31 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 6578 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>已经翻译完毕，准备记录过来。。。</p>
-<ul class="pa0">
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>在了解c++协程时发现了整个文档，读完让自己对协程的了解更清晰了，解开了之前的不少迷惑。</p>
+
+<p>边翻译边读的，把翻译的内容分享到这边。</p>
+
+<style>
+cn {color:rgb(200,200,200);}
+</style>
+
+<h2 id="terms-and-definitions-cn-术语和定义-cn">Terms and Definitions <cn>术语和定义</cn></h2>
+
+<h3 id="coroutine-cn-协程-cn">Coroutine <cn>协程</cn></h3>
+
+<p>A generalized routine that in addition to traditional subroutine operations such as invoke and return supports suspend and resume operations.<br>
+<cn>除了传统的子例程操作（例如调用和返回）之外，通用例程还支持挂起和恢复操作。</cn></p>
+
+<h3 id="coroutine-state-coroutine-frame-cn-协程状态-协程框架-cn">Coroutine State / Coroutine Frame <cn>协程状态/协程框架</cn></h3>
+
+<p>A state that is created when coroutine is first invoked and destroyed once coroutine execution completes. <br>
+<cn>状态会在协程首次调用时创建并在协程运行完成后销毁。</cn><br>
+Coroutine state includes a coroutine promise, formal parameters, variables and temporaries  with automatic storage duration declared in the coroutine body and an implementation defined platform context. <br>
+<cn>协程状态包括协程承诺，形式参数，变量和临时在协程主体中声明的自动生命周期临时变量以及实现定义的平台上下文。 </cn><br>
+A platform context may contain room to save and restore platform specific data as needed to implement suspend and resume operations.<br>
+<cn>平台上下文可能包含用于实现挂起和恢复操作所需的保存和恢复平台特定数据的空间。</cn></p>
+
+<h3 id="coroutine-promise-cn-协程承诺-cn">Coroutine Promise <cn>协程承诺</cn></h3>
+
+<p>A coroutine promise contains library specific data required for implementation of a higher-level abstraction exposed by a coroutine.<br>
+<cn>协程承诺包含实现协程公开的更高级别抽象所需的特定的数据。 </cn><br>
+For example, a coroutine implementing a task-like semantics providing an eventual value via std::future<T> is likely to have a coroutine promise that contains std::promise<T>.<br>
+<cn>例如，一个协程通过std::future<T>实现一个提供最终值的类似任务的语义，很可能会有一个协程承诺，其中包含 std::promise <T>。 </cn><br>
+A coroutine implementing a generator may have a promise that stores a current value to be yielded and a state of the generator (active/cancelling/closed).<br>
+<cn>实现生成器的协程可能拥有一个promise,其中包含存储要yield的当前值以及生成器的状态（活动/取消/关闭）。</cn></p>
+
+<h3 id="coroutine-object-coroutine-handle-return-object-of-the-coroutine-cn-协程的对象-协程句柄-返回对象-cn">Coroutine Object / Coroutine Handle / Return Object of the Coroutine <cn>协程的对象/协程句柄/返回对象</cn></h3>
+
+<p>An object returned from an initial invocation of a coroutine. <br>
+<cn>从协程的初始调用返回的对象。 </cn><br>
+A library developer defines the higher-level semantics exposed by the coroutine object. <br>
+<cn>库开发人员定义了协程对象公开的高级语义。 </cn><br>
+For example, generator coroutines can provide an input iterator that allows to consume values produced by the generator. <br>
+<cn>例如，生成器协程可以提供输入迭代器来消耗生成器产生的值。 </cn><br>
+For task-like coroutines, coroutine object can be used to obtain an eventual value (future<T>, for example).<br>
+<cn>对于类似任务的协程，协程对象可用于获取最终值（例如，future <T>）。</cn></p>
+
+<h3 id="generator-cn-生成器-cn">Generator <cn>生成器</cn></h3>
+
+<p>A coroutine that provides a sequence of values. <br>
+<cn>提供一系列值的协程。</cn><br>
+The body of the generator coroutine uses a yield statement to specify a value to be passed to the consumer. <br>
+<cn>生成器协程的主体使用yield语句指定要传递给使用者的值。 </cn><br>
+Emitting a value suspends the coroutine, invoking a pull operation on a channel resumes the coroutine.<br>
+<cn>发出值将挂起协程，在通道上调用拉操作将恢复协程。</cn></p>
+
+<h3 id="stackless-coroutine-cn-无栈协程-cn">Stackless Coroutine <cn>无栈协程</cn></h3>
+
+<p>A stackless coroutine is a coroutine which state includes variables and temporaries with automatic storage duration in the body of the coroutine and does not include the call stack.<br>
+<cn>无堆栈协程是一种协程，其状态包括在协程主体中的变量和自动生命周期临时变量，但不包括调用堆栈。</cn></p>
+
+<h3 id="stackful-coroutine-fiber-user-mode-thread-cn-堆栈协程-纤程-用户模式线程-cn">Stackful Coroutine / Fiber / User-Mode thread <cn>堆栈协程/纤程/用户模式线程</cn></h3>
+
+<p>A stackful coroutine state includes the full call stack associated with its execution enabling suspension from nested stack frames. Stackful coroutines are equivalent to fibers or user-mode threads.<br>
+<cn>堆栈协程状态包括与其执行关联的完整调用堆栈，从而可以从嵌套堆栈帧中挂起。 堆栈式协程等效于纤程或用户模式线程。</cn></p>
+
+<h3 id="split-stack-linked-stack-segmented-stack-cn-拆分堆栈-链接堆栈-分段堆栈-cn">Split Stack / Linked Stack / Segmented Stack <cn>拆分堆栈/链接堆栈/分段堆栈</cn></h3>
+
+<p>A compiler / linker technology that enables non-contiguous stacks.<br>
+<cn>一种启用非连续堆栈的编译器/链接器技术。</cn></p>
+
+<h3 id="resumable-function-cn-可恢复函数-cn">Resumable Function <cn>可恢复函数</cn></h3>
+
+<p>Proposed C++ language mechanism to implement stackless coroutines.<br>
+<cn>提出的用于实现无堆栈协程的C ++语言机制。</cn></p>
+
+<h2 id="discussion-cn-讨论区-cn">Discussion <cn>讨论区</cn></h2>
+
+<p>Motivation for extending C++ language and libraries to support coroutines was covered by papers N3858 (resumable functions) and N3985 (A proposal to add coroutines to C++ standard library) and will not be repeated here.<br>
+<cn>论文N3858（可恢复功能）和N3985（将协程添加到C ++标准库中的建议）涵盖了扩展C ++语言和库以支持协程的动机，在此不再赘述。</cn></p>
+
+<p>Design goals for this revision of resumable functions were to extend C++ language and standard library to support coroutines with the following characteristics:<br>
+<cn>此可恢复函数修订版的设计目标是扩展C ++语言和标准库，以支持具有以下特征的协程：</cn></p>
+
+<ul>
+<li>Highly scalable (to billions of concurrent coroutines).<br>
+<cn>高度可扩展（可同时处理数十亿个协程）。</cn></li>
+<li>Highly efficient resume and suspend operations comparable in cost to a function call overhead.<br>
+<cn>高效的恢复和挂起操作，其成本与函数调用的开销相当。</cn></li>
+<li>Seamless interaction with existing facilities with no overhead.<br>
+<cn>与现有设施的无缝交互，无开销。</cn></li>
+<li>Open ended coroutine machinery allowing library designers to develop coroutine libraries exposing various high-level semantics, such as generators, goroutines, tasks and more.<br>
+<cn>开放式协同程序机制，使库设计人员可以开发公开各种高级语义的协程库，例如生成器，goroutine，任务等。</cn></li>
+<li>Usable in environments where exception are forbidden or not available<br>
+<cn>在禁止异常或不提供异常的环境中可用</cn></li>
+</ul>
+
+<p>Unlike N3985 (A proposal to add coroutine to the C++ standard library), which proposes certain highlevel abstractions (coroutine-based input / output iterators), this paper focuses only on providing efficient language supported mechanism to suspend and resume a coroutine and leaves high-level semantics of what coroutines are to the discretion of a library developer and thus is comparable to Boost.Context rather than Boost.Coroutine / N3985.<br>
+<cn>与N3985（将协程添加到C ++标准库中的提议）不同，后者提出了某些高级抽象（基于协程的输入/输出迭代器），本文只着眼于提供有效的语言支持机制来暂停和恢复协程并保留高协程的层级语义由库开发人员决定，因此与Boost.Context而不是Boost.Coroutine / N3985相当。</cn></p>
+
+<h3 id="stackless-vs-stackful-cn-无堆栈与有堆栈-cn">Stackless vs Stackful <cn>无堆栈与有堆栈</cn></h3>
+
+<p>Design goals of scalability and seamless interaction with existing facilities without overhead (namely calling into existing libraries and OS APIs without restrictions) necessitates stackless coroutines.<br>
+<cn>可扩展性和与现有设施的无缝交互而没有开销（即无限制地调用现有库和OS API）的设计目标需要无堆栈协程。</cn></p>
+
+<p>General purpose stackful coroutines that reserve default stack for every coroutine (1MB on Windows, 2MB on Linux) will exhaust all available virtual memory in 32-bit address space with only a few thousand coroutines. <br>
+<cn>为每个协程保留默认堆栈的通用堆栈协程（在Windows上为1MB，在Linux上为2MB）将仅用数千个协程耗尽32位地址空间中的所有可用虚拟内存。 </cn><br>
+Besides consuming virtual memory, stackful coroutines lead to memory fragmentation, since with common stack implementations, besides reserving virtual memory, the platform also commits first two pages of the stack (one as a read/write access to be used as a stack, another to act as a guard page to implement automatic stack growth), even though the actual state required by a coroutine could be as small as a few bytes.<br>
+<cn>除了消耗虚拟内存外，堆栈协程还会导致内存碎片，因为在常见的堆栈实现中，平台除了保留虚拟内存外，还会提交堆栈的前两页（一个页面作为堆栈的读/写使用，另一页充当保护页以实现自动堆栈增长），即使协程所需的实际状态可能只有几个字节。</cn></p>
+
+<p>A mitigation approach such as using split-stacks requires the entire program (including all the libraries and OS facilities it calls) to be either compiled with split-stacks or to incur run-time penalties when invoking code that is not compiled with split-stack support.<br>
+<cn>缓解方法（例如，使用拆分堆栈）要求整个程序（包括其调用的所有库和OS工具）都使用拆分堆栈进行编译，或者在调用未使用拆分堆栈进行编译的代码时产生运行时罚款。</cn></p>
+
+<p>A mitigation approach such as using a small fixed sized stack limits what can be called from such coroutines as it must be guaranteed that none of the functions called shall ever consume more memory than allotted in a small fixed sized stack.<br>
+<cn>缓解方法（例如，使用较小的固定大小的堆栈）可限制从协程调用的内容，因为必须确保所调用的函数不会消耗比在固定大小的小型堆栈中分配的内存更多的内存。</cn></p>
+
+<h3 id="implementation-experience-cn-实施经验-cn">Implementation Experience <cn>实施经验</cn></h3>
+
+<p>We implemented language changes described in this paper in Microsoft C++ compiler to gain experience and validate coroutine customization machinery. The following are illustrations of what library designers can achieve using coroutine mechanism described in this paper.<br>
+<cn>我们在Microsoft C ++编译器中实现了本文所述的语言更改，以获取经验并验证协程定制机制。 以下是库设计人员可以使用本文所述的协程机制实现的示例。</cn></p>
+
+<p>Note the usage of proposed, await operator, yield and await-for statements.<br>
+<cn>请注意建议的await运算符，yield和await-for语句的用法。</cn></p>
+
+<h3 id="asynchronous-i-o-cn-异步-i-o-cn">Asynchronous I/O <cn>异步 I/O</cn></h3>
+
+<p>The following code implements zero-overhead abstractions over asynchronous socket API andwindows threadpool. <br>
+<cn>以下代码在异步套接字API和Windows线程池上实现了零开销的抽象。</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">std<span style="color:#f92672">::</span>future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> tcp_reader(<span style="color:#66d9ef">int</span> total)
+{
+	<span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">64</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>];
+	<span style="color:#66d9ef">auto</span> conn <span style="color:#f92672">=</span> await Tcp<span style="color:#f92672">::</span>Connect(<span style="color:#e6db74">&#34;127.0.0.1&#34;</span>, <span style="color:#ae81ff">1337</span>);
+	<span style="color:#66d9ef">do</span>
+	{
+		<span style="color:#66d9ef">auto</span> bytesRead <span style="color:#f92672">=</span> await conn.read(buf, <span style="color:#66d9ef">sizeof</span>(buf));
+		total <span style="color:#f92672">-=</span> bytesRead;
+	}
+	<span style="color:#66d9ef">while</span> (total <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>);
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() { tcp_reader(<span style="color:#ae81ff">1000</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>).get(); }
+</code></pre></div>
+<p>Execution of this program incurs only one memory allocation12 and no virtual function calls. <br>
+<cn>执行该程序仅会导致一次内存分配12，并且不会调用任何虚函数。</cn><br>
+The generated code is as good as or better than what could be written in C over raw OS facilities. <br>
+<cn>生成的代码与在原始OS设施上用C语言编写的代码一样好或更好。 </cn><br>
+The better part is due to the fact that OVERLAPPED structures (used in the implementation of Tcp::Connect and conn.read) are temporary objects on the frame of the coroutine whereas in traditional asynchronous C programs OVERLAPPED structures are dynamically allocated for every I/O operation (or for every distinct kind of I/O operation) on the heap.<br>
+<cn>更好的部分是由于以下事实：OVERLAPPED结构（用于Tcp :: Connect和conn.read的实现）是协程框架上的临时对象，而在传统的异步C程序中，OVERLAPPED结构是为每个I /动态分配的。 堆上的O操作（或每种I / O操作）。</cn></p>
+
+<p>Allocation of a future shared state (N3936/[futures.state]) associated with the future is combined with coroutine frame allocation and does not incur an extra allocation.<br>
+<cn>分配future shared state（N3936 / [futures.state]）与协程框架分配结合在一起，不会产生额外的分配。</cn></p>
+
+<p>Generator Another coroutine type was implemented to validate the generator pattern and a coroutine cancellation mechanics: <br>
+<cn>生成器实现了另一种协程类型以验证生成器模式和协程消除机制:</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">generator<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> fib(<span style="color:#66d9ef">int</span> n) 
+{  
+	<span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  
+	<span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;  
+	<span style="color:#66d9ef">while</span> (n<span style="color:#f92672">--</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)  
+	{   
+		yield a;   
+		<span style="color:#66d9ef">auto</span> next <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> b;   
+		a <span style="color:#f92672">=</span> b;   
+		b <span style="color:#f92672">=</span> next;  
+	} 
+} 
+ 
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() 
+{  
+	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> v : fib(<span style="color:#ae81ff">35</span>)) 
+	{   
+		std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> v <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;   
+		<span style="color:#66d9ef">if</span> (v <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>)
+			<span style="color:#66d9ef">break</span>;
+	}
+}
+</code></pre></div>
+<p>Recursive application of generators allows to mitigate stackless coroutine inability to suspend from nested stack frames. <br>
+<cn>生成器的递归应用可以减轻无堆栈协程无法从嵌套堆栈帧中挂起的麻烦。 </cn><br>
+This example is probably the most convoluted way to print number in range [1..100).<br>
+<cn>此示例可能是最复杂的打印数字范围[1..100]的方法。</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">recursive_generator<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> range(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b)
+{
+	<span style="color:#66d9ef">auto</span> n <span style="color:#f92672">=</span> b <span style="color:#f92672">-</span> a;
+	<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)
+		<span style="color:#66d9ef">return</span>;
+	<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
+	{
+		yield a;
+		<span style="color:#66d9ef">return</span>;
+	}
+	<span style="color:#66d9ef">auto</span> mid <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> n <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+	yield <span style="color:#a6e22e">range</span>(a, mid);
+	yield <span style="color:#a6e22e">range</span>(mid, b);
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() 
+{
+	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> v : range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>))
+		std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> v <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+}
+</code></pre></div>
+<h3 id="parent-stealing-parallel-computations-cn-父窃取并行计算-cn">Parent-stealing parallel computations <cn>父窃取并行计算</cn></h3>
+
+<p>It is possible to adopt coroutine mechanics to support parallel scheduling techniques such as parent stealing [N3872].<br>
+<cn>可以采用协程机制来支持并行调度技术，例如父窃取[N3872]。</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">spawnable<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> fib(<span style="color:#66d9ef">int</span> n) 
+{
+	<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">return</span> n;
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">await</span>(fib(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fib(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>));
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() { std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> fib(<span style="color:#ae81ff">5</span>).get() <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; }
+</code></pre></div>
+<p>In this example operator+ is overloaded for spawnable<T> type. Operator + schedules fib(n – 2) to a work queue whereas the execution continues into fib(n-1). When eventual values for both fib(n-1) and fib(n-2) are ready, fib(n) is resumed and result of await expression is computed as the sum of the eventual value of the left and right operand to + operator.<br>
+<cn>在此示例中，运算符+对于spawnable <T>类型是重载的。 操作员+将fib（n – 2）调度到工作队列，而执行继续到fib（n-1）。 当fib（n-1）和fib（n-2）的最终值都准备好时，将恢复fib（n）并将await表达式的结果计算为+运算符左右操作数的最终值之和 。</p>
+
+<p>Utilizing parent-stealing scheduling allows to compute fib(42) in less than 12k of space, whereas attempting to use more traditional scheduling will cause state explosion that will consume more than 2gig of memory around fib(32).<br>
+<cn>利用父窃取调度可以在不到12k的空间中计算fib（42），而尝试使用更多传统调度会导致状态爆炸，从而消耗fib（32）周围2 gig以上的内存。</cn></p>
+
+<p>Note, there are much better ways to compute Fibonacci numbers.<br>
+<cn>请注意，还有更好的方法来计算斐波纳契数。</cn></p>
+
+<h3 id="go-like-channels-and-goroutines-cn-类go语言的通道和goroutines-cn">Go-like channels and goroutines <cn>类go语言的通道和goroutines</cn></h3>
+
+<p>The following example (inspired by programming language go [GoLang]) creates one million goroutines,connects them to each other using channels and passes a value that will travel through all the coroutines.<br>
+<cn>下面的示例（受编程语言go [GoLang]的启发）创建了一百万个goroutine，并使用通道将它们相互连接，并传递了将贯穿所有协程的值。</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">goroutine <span style="color:#a6e22e">pusher</span>(channel<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> left, channel<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> right)
+{
+	<span style="color:#66d9ef">for</span> (;;) 
+	{
+		<span style="color:#66d9ef">auto</span> val <span style="color:#f92672">=</span> await left.pull();
+		await right.push(val <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+	}
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> N <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>;
+	std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>channel<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> c(N <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> N; <span style="color:#f92672">++</span>i)
+		goroutine<span style="color:#f92672">::</span>go(pusher(c[i], c[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]));
+		
+	c.front().sync_push(<span style="color:#ae81ff">0</span>);
+	std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> c.back().sync_pull() <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+}
+</code></pre></div>
+<h3 id="reactive-streams-cn-反应流-cn">Reactive Streams <cn>反应流</cn></h3>
+
+<p>Resumable functions can be used as producers, consumers and transformers of reactive streams in recently rediscovered [Rx, ReactiveX, RxAtNetflix] functional reactive programming [FRP].<br>
+<cn>在最近重新发现的[Rx，ReactiveX，RxAtNetflix]功能反应式编程[FRP]中，resumable函数可用作反应流的生产者，使用者和转换器。</cn></p>
+
+<p>As a consumer (utilizing await-for statement proposed by this paper):<br>
+<cn>作为消费者（利用本文本提出的await-for语句）：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> Sum(async_read_stream<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span> input)
+{
+	<span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">await</span> (v : input)
+	{
+		sum <span style="color:#f92672">+=</span> v;
+	}
+	<span style="color:#66d9ef">return</span> sum;
+}
+</code></pre></div>
+<h3 id="as-a-producer-cn-作为生产者-cn">As a producer: <cn>作为生产者</cn></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">async_generator<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> Ticks()
+{
+	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> tick <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;; <span style="color:#f92672">++</span>tick)
+	{
+		yield tick;
+		await <span style="color:#a6e22e">sleep_for</span>(<span style="color:#ae81ff">1</span>ms);
+	}
+}
+</code></pre></div>
+<h3 id="resumable-lambdas-as-generator-expressions-cn-可恢复lambda作为生成器的表达式-cn">Resumable lambdas as generator expressions <cn>可恢复lambda作为生成器的表达式</cn></h3>
+
+<p>Resumable lambdas can be used as generator expressions [PythonGeneratorExpressions].<br>
+<cn>可恢复lambda可以作为生成器的表达式 [PythonGeneratorExpressions].</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">squares <span style="color:#f92672">=</span> (x<span style="color:#f92672">*</span>x <span style="color:#66d9ef">for</span> x in S) <span style="color:#75715e">// python
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">auto</span> squares <span style="color:#f92672">=</span> [<span style="color:#f92672">&amp;</span>]{ <span style="color:#66d9ef">for</span>(x:S) yield x<span style="color:#f92672">*</span>x;} ; <span style="color:#75715e">// C++
+</span></code></pre></div>
+<p>In this case squares is a lazy transformer of sequence S and similar in that respect to boost range adapters [BoostRangeAdapter].<br>
+<cn>在这种情况下，squares是序列S的惰性转换器，与boost库的range adapters[BoostRangeAdapter]类似。</cn></p>
+
+<h2 id="conceptual-model-cn-概念模型-cn">Conceptual Model <cn>概念模型</cn></h2>
+
+<h3 id="resumable-function-cn-可恢复函数-cn-1">Resumable Function <cn>可恢复函数</cn></h3>
+
+<p>A function or a lambda is called resumable function or resumable lambda if a body of the function or lambda contains at least one suspend/resume point. <br>
+<cn>如果函数或lambda的主体包含至少一个挂起/恢复点，则该函数或lambda称为可恢复函数或可恢复lambda。 </cn><br>
+Suspend/resume points are expressions with one or more await operators, yield statements or await-for statements. <br>
+<cn>挂起/恢复点是具有一个或多个await运算符，yield语句或await-for语句的表达式。 </cn><br>
+From this point on, we will use the term resumable function to refer to either resumable lambda or resumable function.<br>
+<cn>从现在开始，我们将使用术语可恢复函数来指代可恢复lambda或可恢复函数。</cn></p>
+
+<p>Suspend/resume points indicate the location where execution of the resumable function can be suspended and control returned to the current caller with an ability to resume execution at suspend/resume point later.<br>
+<cn>挂起/恢复点指示可恢复函数的执行时可挂起的位置，并且控制权返回给当前调用方，并具有稍后在挂起/恢复点恢复执行的能力。</cn></p>
+
+<p>N3936/[intro.execution]/7 defines that suspension of a block preserves the automatic variables in a case of a function call or receipt of a signal. We propose to extend that language to coroutine suspension as well.<br>
+<cn>N3936 / [intro.execution] / 7定义了在函数调用或信号接收的情况下，块的暂停会保留自动变量。 我们建议将该语言也扩展到协程暂停。</cn></p>
+
+<p>From the perspective of the caller, resumable function is just a normal function with that particular signature. <br>
+<cn>从调用者的角度来看，可恢复功能只是具有该特定签名的普通功能。 </cn><br>
+The fact that a function is implemented as resumable function is unobservable by the caller. <br>
+<cn>函数作为可恢复函数实现的事实是调用者无法观察到的。 </cn><br>
+In fact, v1 version of some library can ship an implementation of some functions as resumable and switch it later to regular functions or vice versa without breaking any library user.<br>
+<cn>实际上，某些库的v1版本可以将某些功能的实现作为可恢复的方式交付，并稍后将其切换为常规功能，反之亦然，而不会破坏任何库用户。</cn></p>
+
+<h4 id="design-note-cn-设计说明-cn">Design Note: <cn>设计说明</cn></h4>
+
+<p>Original design relied on resumable keyword to annotate resumable functions or lambdas. <br>
+<cn>原始设计依赖于resumable关键字来注释可恢复功能或lambda。 </cn><br>
+This proposal does away with resumable keyword relying on the presence of suspend/resume points. <br>
+<cn>该提议取消了依赖于挂起/恢复点的可恢复关键字。 </cn><br>
+There were several motivations for this change.<br>
+<cn>进行此更改有多种动机。</cn></p>
+
+<ol>
+<li><p>It eliminates questions such as: Is resumable a part of signature or not? Does it change a calling conventions? Should it be specified only on a function definition?<br>
+<cn>它消除了以下问题：可恢复是否是签名的一部分？ 它会改变调用约定吗？ 是否应该仅在函数定义中指定？</cn></p></li>
+
+<li><p>It eliminates compilation errors due to the absence of resumable keyword that were in the category: “A compiler knows exactly what you mean, but won’t accept the code until you type ‘resumable’.”<br>
+<cn>消除了由于以下类别中不存在resumable关键字而导致的编译错误：“编译器完全了解您的意思，但是在您键入“ resumable”之前，您不会接受代码。”</cn></p></li>
+
+<li><p>Usability experience with the resumable functions implemented in C++ compiler by the authors. Initial implementation had resumable keyword and writing code felt unnecessarily verbose with having to type resumable in the declarations and definitions of functions or lambda expressions.<br>
+<cn>作者在C ++编译器中实现的可恢复功能的可用性经验。 最初的实现具有可恢复的关键字，并且在函数或lambda表达式的声明和定义中必须输入可恢复的类型，从而使编写代码变得不必要地冗长。</cn></p></li>
+</ol>
+
+<h3 id="coroutine-traits-cn-协程特征-cn">Coroutine traits <cn>协程特征</cn></h3>
+
+<p>Coroutine traits are specialized by resumable functions to select an allocator and a coroutine promise to use in a particular resumable function.<br>
+<cn>协程特征是由可恢复函数专用的，以选择分配器，并在特定可恢复函数中使用协程承诺。</cn></p>
+
+<p>If the signature of a resumable function is<br>
+<cn>如果可恢复函数的签名是</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	R func(T1, T2, <span style="color:#960050;background-color:#1e0010">…</span> Tn)
+</code></pre></div>
+<p>then, a traits specialization std::coroutine_traits<R,T1,T2,…,Tn> will indicate what allocator and what coroutine promise to use.<br>
+<cn>然后，特征特化std :: coroutine_traits<R，T1，T2，...，Tn>将指示使用什么分配器和协程。</cn></p>
+
+<p>For example, for coroutines returning future<R>, the following trait specialization can be provided.<br>
+<cn>例如，对于返回future<R>的协程，可以提供以下特征特化。</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> R, <span style="color:#66d9ef">typename</span>... Ts<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">coroutine_traits</span><span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>future<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span>, Ts...<span style="color:#f92672">&gt;</span>
+{
+	<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span>... Us<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">auto</span> get_allocator(Us<span style="color:#f92672">&amp;&amp;</span>...);
+	<span style="color:#66d9ef">using</span> promise_type <span style="color:#f92672">=</span> some<span style="color:#f92672">-</span>type<span style="color:#f92672">-</span>satisfying<span style="color:#f92672">-</span>coroutine<span style="color:#f92672">-</span>promise<span style="color:#f92672">-</span>requirements;
+};
+</code></pre></div>
+<p>get_allocator should return an object satisfying allocator requirements N3936/[allocator.requirements]. <br>
+<cn>get_allocator应该返回一个满足分配器要求的对象N3936/[allocator.requirements]。</cn><br>
+If get_allocator is not specified, a resumable function will defaults to using std::allocator<char>. get_allocator can examine the parameters and decide if there is a stateful allocator passed to a function and use it, otherwise, it can ignore the parameters and return a stateless allocator.<br>
+<cn>如果未指定get_allocator，则可恢复函数将默认使用std :: allocator <char>。 get_allocator可以检查参数，并确定是否有状态分配器传递给函数并使用它，否则，它可以忽略参数并返回无状态分配器。</cn></p>
+
+<p>promise_type should satisfy requirements specified in “Coroutine Promise Requirements”. <br>
+<cn>promise_type应该满足“协约承诺要求”中指定的要求。 </cn>
+If promise_type is not specified it is assumed to be as if defined as follows:<br>
+<cn>如果未指定promise_type，则假定其定义如下：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	<span style="color:#66d9ef">using</span> promise_type <span style="color:#f92672">=</span> <span style="color:#66d9ef">typename</span> R<span style="color:#f92672">::</span>promise_type;
+</code></pre></div>
+<p>C++ standard library defines the coroutine traits as follows:<br>
+<cn>C ++标准库将协程特征定义如下：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> R, <span style="color:#66d9ef">typename</span>... Ts<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">coroutine_traits</span>
+{
+	<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span>... Us<span style="color:#f92672">&gt;</span>
+	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">auto</span> get_allocator(Us<span style="color:#f92672">&amp;&amp;</span>...) { <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>allocator<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span>{}; }
+	<span style="color:#66d9ef">using</span> promise_type <span style="color:#f92672">=</span> <span style="color:#66d9ef">typename</span> R<span style="color:#f92672">::</span>promise_type;
+};
+</code></pre></div>
+<p>Design note: Another design option is to use only the return type in specializing the coroutine traits. <br>
+<cn>设计说明：另一个设计选项是仅在特殊协程特征中使用返回类型。</cn><br>
+The intention for including parameter types is to enable using parameters to alter allocation strategies or other implementation details while retaining the same coroutine return type.<br>
+<cn>包括参数类型的目的是使能使用参数来更改分配策略或其他实现细节，同时保留相同的协程返回类型。</cn></p>
+
+<h3 id="allocation-and-parameter-copy-optimizations-cn-分配和参数复制优化-cn">Allocation and parameter copy optimizations <cn>分配和参数复制优化</cn></h3>
+
+<p>An invocation of a coroutine may incur an extra copy or move operation for the formal parameters if they need to be transferred from an ABI prescribed location into a memory allocated for the coroutine frame.<br>
+<cn>如果需要将形式参数从ABI指定的位置转移到为协程框架分配的内存中，则对协程的调用可能会招致额外的复制或移动操作。</cn></p>
+
+<p>A parameter copy is not required if a coroutine never suspends or if it suspends but its parameters will not be accessed after the coroutine is resumed.<br>
+<cn>如果协程从不挂起；或挂起后，但在协程恢复后将不访问其参数，则不需要参数副本。</cn></p>
+
+<p>If a parameter copy/move is required, class object moves are performed according to the rules described in Copying and moving class objects section of the working draft standard 3936/[class.copy].<br>
+<cn>如果需要复制/移动参数，则根据工作草案标准3936 / [class.copy]的“复制和移动类对象”部分中描述的规则执行类对象移动。</cn></p>
+
+<p>An implementation is allowed to elide calls to the allocator’s allocate and deallocate functions and use stack memory of the caller instead if the meaning of the program will be unchanged except for the execution of the allocate and deallocate functions.<br>
+<cn>如果除了执行allocate和deallocate函数之外，程序的含义不变，则允许实现取消对分配器的allocate和deallocate函数的调用，并使用调用方的堆栈内存。</cn></p>
+
+<h3 id="auto-decltype-auto-return-type-cn-auto-decltype-auto-返回类型-cn">auto / decltype(auto) return type <cn>auto / decltype（auto）返回类型</cn></h3>
+
+<p>If a function return type is auto or declspec(auto) and no trailing return type is specified, then the return type of the resumable function is deduced as follows:<br>
+<cn>如果函数返回类型为auto或declspec（auto）且未指定尾随返回类型，则可恢复函数的返回类型推导如下：</cn></p>
+
+<ol>
+<li><p>If a yield statement and either an await expression or an await-for statement are present, then the return type is default-async-generator<T,R>, where T is deduced from the yield statements and R is deduced from return statements according to the rules of return type deduction described in N3936/[dcl.spec.auto].<br>
+<cn>如果存在yield语句以及await表达式或await-for语句，则返回类型为default-async-generator <T，R>，其中从yield语句推导T，根据N3936/[dcl.spec.auto]中描述的返回类型推导规则从返回语句推导R,。</cn></p></li>
+
+<li><p>Otherwise, if an await expression or an await-for statement are present in a function, then return type is default-standard-task-type<T> where type T is deduced from return statements as described in N3936/[dcl.spec.auto].<br>
+<cn>否则，如果函数中存在await表达式或await-for语句，则返回类型为default-standard-task-type <T>，其中T从返回语句中推导，如N3936/[dcl.spec.auto]所描述的。</cn></p></li>
+
+<li><p>Otherwise, If a yield statement is present in a function, then return type is default-eneratortype<T>, where T is deduced from the yield statements according to the rules of return type deduction described in N3936/[dcl.spec.auto].<br>
+<cn>否则，如果函数中存在yield语句，则返回类型为default-eneratortype<T>，其中T是根据N3936/[dcl.spec.auto]中描述的返回类型推导规则，从yield语句中推导的。</cn></p></li>
+</ol>
+
+<p>At the moment we do not have a proposal for what default-standard-task-type, default-generator-type or default-async-generator should be. <br>
+<cn>目前，我们尚无关于默认标准任务类型，默认生成器类型或默认异步生成器的建议。 </cn><br>
+We envision that once resumable functions are available as a language feature, C++ community will come up with ingenious libraries utilizing that feature and some of them will get standardized and become default-generator-type, default-task-type and default-asyncgenerator types. <br>
+<cn>我们设想一旦可恢复功能作为语言功能可用，C ++社区将提出利用该功能的巧妙库，其中一些将标准化并成为default-generator-type，default-task-type和default-asyncgenerator类型。 </cn><br>
+Appendix A, provides a sample implementation of generator&lt; T&gt;.<br>
+<cn>附录A提供了generator&lt; T&gt;的示例实现。</cn></p>
+
+<p>Until that time, an attempt to define resumable functions with auto / decltype(auto) and no trailing return type should result in a diagnostic message.<br>
+<cn>在此之前，尝试使用auto / decltype（auto）定义可恢复函数且没有尾随返回类型的操作都会产生诊断消息。</cn></p>
+
+<h3 id="c-does-not-need-generator-expressions-it-already-has-them-cn-c-不需要生成器表达式-它已经有了-cn">C++ does not need generator expressions… it already has them! <cn>C ++不需要生成器表达式……它已经有了！</cn></h3>
+
+<p>Assuming that we have a standard generator type that can be deduced as described before, the Python’s generator expression can be trivially written in C++:<br>
+<cn>假设我们可以按照前面所述推导标准生成器类型，那么Python的生成器表达式可以用C ++轻松编写：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">	squares <span style="color:#f92672">=</span> (x<span style="color:#f92672">*</span>x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> s) <span style="color:#f92672">//</span> python</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	<span style="color:#66d9ef">auto</span> squares <span style="color:#f92672">=</span> [<span style="color:#f92672">&amp;</span>]{ <span style="color:#66d9ef">for</span>(x:s) yield x<span style="color:#f92672">*</span>x;} ; <span style="color:#75715e">// C++
+</span></code></pre></div>
+<h3 id="coroutine-promise-requirements-cn-协程承诺要求-cn">Coroutine promise Requirements <cn>协程承诺要求</cn></h3>
+
+<p>A library developer supplies the definition of the coroutine promise to implement desired high-level semantics associated with a coroutine type. The following tables describe the requirements on coroutine promise types. <br>
+<cn>库开发人员提供了协程承诺的定义，以实现与协程类型相关联的所需高级语义。 下表描述了协程诺言类型的要求。</cn></p>
+
+<p>Table 1: Descriptive Variable definitions<br>
+<cn>表1：描述性变量定义</cn></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">P</td>
+<td align="left">Coroutine promise type</td>
+</tr>
+
+<tr>
+<td align="left">P</td>
+<td align="left">A value of type P</td>
+</tr>
+
+<tr>
+<td align="left">E</td>
+<td align="left">A value of std::exception_ptr type</td>
+</tr>
+
+<tr>
+<td align="left">Rh</td>
+<td align="left">A value of type std::coroutine_handle&lt; P&gt;</td>
+</tr>
+
+<tr>
+<td align="left">T</td>
+<td align="left">An arbitrary type T</td>
+</tr>
+
+<tr>
+<td align="left">V</td>
+<td align="left">A value of type</td>
+</tr>
+</tbody>
+</table>
+
+<p>Table 2: Coroutine Promise Requirements<br>
+<cn>表2：协程承诺要求</cn></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Expression</th>
+<th align="left">Note</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">P{}</td>
+<td align="left">Constructs a promise type.</td>
+</tr>
+
+<tr>
+<td align="left">p.get_return_object(rh)</td>
+<td align="left">get_return_object is invoked by the coroutine to construct the return object prior to the first suspend operation. <br><cn>在第一个挂起操作之前，协程调用get_return_object构造返回对象。<cn><br> get_return_object receives a value td::coroutine_handle<Promise> as the first parameter. <br><cn>get_return_object接收值td :: coroutine_handle<Promise>作为第一个参数。</cn><br>An object of std::coroutine_handle<Promise> type can be used to resume the coroutine or get access to its promise.<br><cn>std :: coroutine_handle<Promise>类型的对象可用于恢复协程或访问其Promise。</cn></td>
+</tr>
+
+<tr>
+<td align="left">p.set_result(v)</td>
+<td align="left">Sets the value associated with the promise. set_result is invoked by a resumable function when return <expr> ; statement is encountered in a resumable function. <br><cn>设置与承诺关联的值。 set_result由可恢复函数在遇到return <expr>语句时调用。</cn><br>If p.set_result(v) member function is not present, coroutine does not support eventual return value and presence of return <expr> statement in the body is a compile time error.<br><cn>如果不存在p.set_result（v）成员函数，则协程不支持最终的返回值，并且主体中return <expr>语句的存在是编译时错误。</cn></td>
+</tr>
+
+<tr>
+<td align="left">p.set_result()</td>
+<td align="left">set_result() is invoked by the resumable function when return; statement is encountered or the control reaches the end of the resumable function.<br><cn>set_result(）由可恢复函数在遇到return;语句或执行到达函数末尾时调用。</cn><br>If set_result() is not present, it is assumed that the function supports eventual value and diagnostic should be given if return &lt; expr&gt; is not present in the body of the resumable function<br><cn>如果不存在set_result（），则假定该函数支持最终值，并且如果在可恢复函数的主体中不存在return <expr>，则应给出诊断信息</cn><br>If both set_result() and set_result(v) are present in a promise type,the type does not  satisfy coroutine promise requirement and a diagnostic message should be given to the user.<br><cn>如果promise类型中同时存在set_result（）和set_result（v），则该类型不能满足协程promise的要求，应向用户提供诊断消息。</cn></td>
+</tr>
+
+<tr>
+<td align="left">p.set_exception(e)</td>
+<td align="left">set_exception is invoked by a resumable function when an unhandled exception occurs within a body of the resumable function.<br><cn>当可恢复函数的主体中发生未处理的异常时，可恢复函数将调用set_exception。</cn><br>If promise does not provide set_exception, unhandled exceptions will propagate from a resumable functions normally.<br><cn>如果promise不提供set_exception，则未处理的异常将按正常情况下从可恢复函数传播。</cn></td>
+</tr>
+
+<tr>
+<td align="left">p.yield_value(v)</td>
+<td align="left">returns: awaitable expression<br><cn>返回：等待的表达式</cn><br>yield_value is invoked when yield statement is evaluated in the resumable function.<br><cn>当在可恢复函数中计算yield语句时，调用yield_value。</cn><br>If yield_value member function is not present, using yield statement in the body of the resumable function results in a compile time error.<br><cn>如果不存在yield_value成员函数，则在可恢复函数的主体中使用yield语句会导致编译时错误。</cn><br> yield &lt; expr&gt;; is equivalent to<br>(void)( await &lt; Promise&gt;.yield_value(&lt; expr&gt;) );<br>Where a &lt; Promise&gt; refers to the coroutine promise of the enclosing resumable function.<br><cn>&lt; Promise&gt;指的是封闭的可恢复函数的协程承诺。</cn></td>
+</tr>
+
+<tr>
+<td align="left">initial_suspend()</td>
+<td align="left">Returns: awaitable expression<br><cn>返回：等待的表达式</cn><br> A resumable function awaits on a value returned by the initial_suspend() member function immediately before user provided body of the resumable function is entered.<br><cn>在进入用户提供的可恢复函数主体之前，可恢复函数等待由initial_suspend（）成员函数返回的值。</cn><br> This member function gives a library designer an option to suspend a coroutine after the coroutine frame is allocated, parameters are copied and return object is obtained, but before entering the userprovided body of the coroutine.<br><cn>此成员函数使库设计人员可以选择在协程框架分配完，复制完参数并获取返回对象之后（但在进入用户提供的协程主体之前）暂停协程。</cn><br> For example, in a generator scenario, a library designer can choose to suspend a generator prior to invoking user provided body of the coroutine and to resume it once the user of the generator tries to pull the first value.<br><cn>例如，在生成器方案中，库设计者可以选择在调用用户提供的协程主体之前先挂起生成器，并在生成器用户尝试提取第一个值时恢复它。</cn></td>
+</tr>
+
+<tr>
+<td align="left">final_suspend()</td>
+<td align="left">Returns: nothrow awaitable expression<br><cn>返回：不抛出异常等待表达式</cn><br>Throws: nothing<br>Resumable function awaits on a value returned by final_suspend() immediately after the user provided body of the resumable function i.e. point prior to the destruction and deallocation of a coroutine frame.<br><cn>在用户提供可恢复函数的主体之后，即在销毁协程框架并释放之前，可恢复函数立即等待final_suspend（）返回的值。</cn><br>This allows library designer to store the eventual value of the task, or the current value of the generator within the coroutine promise. Once the eventual value or last value is consumed, coroutine can be resumed to free up resources associated with it.<br><cn>这使库设计者可以将任务的最终值或生成器的当前值存储在协程诺言中。 一旦消耗了最终值或最后一个值，就可以恢复协程以释放与其关联的资源。</cn></td>
+</tr>
+
+<tr>
+<td align="left">cancellation_requested()</td>
+<td align="left">Returns: bool to indicate whether coroutine is being cancelled<br><cn>返回：bool指示协程是否被取消</cn> cancellation_requested() is evaluated on resume code path. If it evaluates to true, control is transferred to the point immediately prior to compiler synthesized await promise-expr.final_suspend(), otherwise control is transferred to the current resume point.<br><cn>cancel_requested（）在恢复代码路径上评估。 如果评估结果为true，则将控制权转移到编译器合成之前立即等待的点，然后等待promise-expr.final_suspend()，否则控制权将转移到当前的恢复点。</cn><br> All of the objects with non-trivial destructors, will be destroyed in the same manner as if “goto end-label” statement was executed immediately after the resume point.<br><cn>具有非平凡析构函数的所有对象将在回复点后立即销毁，就像“ goto end-label”语句的执行方式。</cn><br>(Assuming that “goto” was allowed to be used within an expression)<br><cn>（假设在表达式中允许使用“ goto”）</cn></td>
+</tr>
+</tbody>
+</table>
+
+<p>Bikeshed: on_complete, on_error, on_next as a replacement for set_result, set_exception and yield_value, set_error as a replacement for set_exception.<br>
+<cn>具有争议的话题:on_complete, on_error, on_next替代set_result, set_exception and yield_value,set_error 替代set_exception</cn></p>
+
+<h3 id="resumption-function-object-cn-可恢复函数对象-cn">Resumption function object <cn>可恢复函数对象</cn></h3>
+
+<p>A resumable function has the ability to suspend evaluation by means of await operator or yield and await-for statements in its body. Evaluation may later be resumed at the suspend/resume point by invoking a resumption function object.<br>
+<cn>可恢复函数具有通过其主体中的await运算符或yield和await-for语句暂停求值的能力。 稍后可以通过调用恢复功能对象在暂停/恢复点恢复求值。</cn></p>
+
+<p>A resumption function object is defined by C++ standard library as follows:<br>
+<cn>可恢复函数对象由C ++标准库定义如下：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Promise <span style="color:#f92672">=</span> <span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">coroutine_handle</span>;
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">coroutine_handle</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span>
+{
+	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">operator</span>() ();
+	<span style="color:#66d9ef">static</span> coroutine_handle<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> from_address(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>);
+	<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">to_address</span>() ;
+	<span style="color:#66d9ef">explicit</span> <span style="color:#66d9ef">operator</span> <span style="color:#a6e22e">bool</span>() <span style="color:#66d9ef">const</span>;
+	coroutine_handle() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+	<span style="color:#66d9ef">explicit</span> <span style="color:#a6e22e">coroutine_handle</span>(std<span style="color:#f92672">::</span>nullptr_t);
+	coroutine_handle<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">=</span> (nullptr_t);
+};
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Promise<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">coroutine_handle</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> coroutine_handle<span style="color:#f92672">&lt;&gt;</span>
+{
+	Promise <span style="color:#f92672">&amp;</span> promise();
+	Promise <span style="color:#66d9ef">const</span> <span style="color:#f92672">&amp;</span> promise() <span style="color:#66d9ef">const</span>;
+	<span style="color:#66d9ef">static</span> coroutine_handle<span style="color:#f92672">&lt;</span>Promise<span style="color:#f92672">&gt;</span> from_promise(Promise<span style="color:#f92672">*</span>);
+	<span style="color:#66d9ef">using</span> coroutine_handle<span style="color:#f92672">&lt;&gt;::</span>coroutine_handle;
+	coroutine_handle<span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">=</span> (nullptr_t);
+};
+
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Promise<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">==</span> (coroutine_handle<span style="color:#f92672">&lt;</span>Promise<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">&amp;</span> a,
+ coroutine_handle<span style="color:#f92672">&lt;</span>Promise<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">&amp;</span> b);
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Promise<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">!=</span> (coroutine_handle<span style="color:#f92672">&lt;</span>Promise<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">&amp;</span> a,
+ coroutine_handle<span style="color:#f92672">&lt;</span>Promise<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">&amp;</span> b)
+</code></pre></div>
+<p>Note, that by design, a resumption function object can be “round tripped” to void * and back. This property allows seamless interactions of resumable functions with existing C APIs.<br>
+<cn>请注意，通过设计，可以将可恢复函数对象“往返”到void *并返回。 此属性允许可恢复函数与现有C API的无缝交互。</cn></p>
+
+<p>Resumption function object has two forms. One that provides an ability to resume evaluation of a resumable function and another, which additionally allows access to the coroutine promise of a particular resumable function.<br>
+<cn>恢复函数对象有两种形式。 一个提供了恢复对可恢复函数的求值的能力，另一个提供了访问特定可恢复函数的协程承诺的能力。</cn></p>
+
+<p>Bikeshed: resumption_handle, resumption_object, resumable_ptr, basic_coroutine_handle instead of coroutine_handle&lt; void&gt;, from_raw_address, to_raw_address, from_pvoid, to_pvoid.<br>
+<cn>具有争议的话题:使用resumption_handle, resumption_object, resumable_ptr, basic_coroutine_handle 替代 coroutine_handle&lt; void&gt;, from_raw_address, to_raw_address, from_pvoid, to_pvoid.</cn></p>
+
+<h3 id="await-operator-cn-await操作符-cn">await operator <cn>await操作符</cn></h3>
+
+<p>is a unary operator expression of the form: await cast-expression<br>
+<cn>是一元操作符，格式如下:await cast-expression</cn></p>
+
+<ol>
+<li><p>The await operator shall not be invoked in a catch block of a try-statement<br>
+<cn>不应在try-statement的catch块中调用await运算符</cn></p></li>
+
+<li><p>The result of await is of type T, where T is the return type of the await_resume function invoked as described in the evaluation of await expression section. <br>
+<cn>await的结果为T类型，其中T是await_resume函数的返回类型，如await表达式的求值部分所述。 </cn><br>
+If T is void, then the await expression cannot be the operand of another expression.<br>
+<cn>如果T为void，则await表达式不能是另一个表达式的操作数。</cn></p></li>
+</ol>
+
+<h3 id="evaluation-of-await-expression-cn-await表达式的求值-cn">Evaluation of await expression <cn>await表达式的求值</cn></h3>
+
+<p>An await expression in a form await cast-expression is equivalent to (if it were possible to write an expression in terms of a block, where return from the block becomes the result of the expression)<br>
+<cn>形式为await cast-expression的await表达式等效于（如果可以用块的形式编写表达式，则从该块的返回成为表达式的结果）</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">{
+	<span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;&amp;</span> __expr <span style="color:#f92672">=</span> cast<span style="color:#f92672">-</span>expression;
+	<span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>await<span style="color:#f92672">-</span>ready<span style="color:#f92672">-</span>expr ) 
+	{
+		await<span style="color:#f92672">-</span>suspend<span style="color:#f92672">-</span>expr;
+		suspend<span style="color:#f92672">-</span>resume<span style="color:#f92672">-</span>point
+	}
+	cancel<span style="color:#f92672">-</span>check;
+	<span style="color:#66d9ef">return</span> await<span style="color:#f92672">-</span>resume<span style="color:#f92672">-</span>expr;
+}
+</code></pre></div>
+<p>Where <strong>expr is a variable defined for exposition only, and _ExprT is the type of the cast-expression, and _PromiseT is a type of the coroutine promise associated with current resumable function and the rest defined as follows:<br>
+<cn>其中</strong>expr是仅为阐述定义的变量，_ExprT是强制转换表达式的类型，_PromiseT是与当前可恢复功能关联的协程承诺的类型，其余定义如下：</cn></p>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">await-ready-expr<br>await-suspend-expr<br>await-resume-expr</td>
+<td align="left">— if _ExprT is a class type, the unqualified-ids await_ready, await_suspend and await_resume are looked up in the scope of class _ExprT as if by class member access lookup (N3936/3.4.5 [basic.lookup.classref]), and if it finds at least one declaration, then await_ready-expr, await_suspend-expr and await_resume-expr are __expr.await_ready(),  __expr.await_suspend(resumption-function-object) and __expr.await_resume(), respectively;<br> <cn>—如果_ExprT是类类型，则在类_ExprT的范围内查找不合格ID await_ready，await_suspend和await_resume，就好像由类成员访问查找（N3936 / 3.4.5 [basic.lookup.classref]）一样，如果 它找到至少一个声明，然后await_ready-expr，await_suspend-expr和await_resume-expr分别是__expr.await_ready（），__expr.await_suspend（resumption-function-object）和__expr.await_resume（）；</cn><p> — otherwise, await_ready-expr, await_suspend-expr and await_resumeexpr are await_ready(__expr), await_suspend(__expr, resumptionfunction-object) and await_resume(__expr), respectively, where await_ready, await_suspend and await_resume are looked up in the associated namespaces (N3936/3.4.2). [ Note: Ordinary unqualified lookup (3.4.1) is not performed. —end note ]<br><cn>—否则，await_ready-expr，await_suspend-expr和await_resumeexpr分别是await_ready（__expr），await_suspend（__expr，resumetionfunction-object）和await_resume（__expr），其中await_ready，await_suspend和await_resumes在（3中查找N 3.4.2）。 [注意：不执行普通的不合格查找（3.4.1）。 —尾注]</cn><p> A type for which await_ready, await_suspend and await_resume function can be looked up by the rules described above is called an awaitable type.<br><cn>可以通过上述规则查找await_ready，await_suspend和await_resume函数的类型称为等待类型。</cn><p> If none of await_xxx functions can throw an exception, the awaitable type is called a nothrow awaitable type and expression of this type a nothrow awaitable expressions.<br><cn>如果await_xxx函数中的任何一个都不能引发异常，则将awaitable类型称为nothrow awaitable类型，并将此类型的表达式称为nothrow awaitable表达式。</cn></td>
+</tr>
+
+<tr>
+<td align="left">resumption-function-object</td>
+<td align="left">A function object of type std::coroutine_handle&lt;_PromiseT&gt;. When function object is invoked it will resume execution of the resumable function at the point marked by suspend-resume-point.<br><cn>类型为std :: coroutine_handle &lt;_PromiseT&gt;的函数对象。 调用函数对象时，它将在suspend-resume-point标记的点处恢复可恢复功能的执行。</cn></td>
+</tr>
+
+<tr>
+<td align="left">suspend-resume-point</td>
+<td align="left">When this point is reached, the coroutine is suspended. Once resumed,execution continues immediately after the suspend-resume-point<br><cn>当达到这一点时，协程将暂停。 恢复后，执行将在挂起恢复点之后立即继续</cn></td>
+</tr>
+
+<tr>
+<td align="left">cancel-check</td>
+<td align="left">For all await expressions except for the one implicitly synthesized by a compiler at the end of the function it is <br><cn>对于所有等待表达式，除了由编译器在函数末尾隐式合成的表达式之外，它是</cn><p>if ( &lt;promise-expr&gt;.cancellation_requested() ) goto &lt;end-label&gt;;<p> where &lt;promise-expr&gt; is a reference to a coroutine promise associated with the current resumable function and an end-label is a label at the end of the user provided body of the resumable function, just prior to the await &lt;promise-expr&gt;.final_suspend().<br><cn>其中&lt;promise-expr&gt;是对与当前可恢复功能关联的协程诺言的引用，而end-label是位于用户提供的可恢复功能主体的末尾的标签，就在await &lt;promise-expr&gt;.final_suspend（）之前。</cn></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Design Note: rules for lookup of await_xxx identifiers mirror the look up rules for range-based for statement. We also considered two other alternatives (we implemented all three approaches to test their usability, but found the other two less convenient than the one described above):<br>
+<cn>设计说明：await_xxx标识符查找规则反映了基于范围的for语句的查找规则。 我们还考虑了另外两种选择（我们实施了这三种方法来测试其可用性，但发现其他两种方法比上述一种方法不方便）</cn>
+1. To have only ADL based lookup and not check for member functions. This approach was rejected as it disallowed one of the convenient patterns that was developed utilizing await. Namely to have compact declaration for asynchronous functions in a form: <br>
+<cn>仅具有基于ADL的查找，而不检查成员函数。 该方法被拒绝，因为它不允许使用等待开发的便捷模式之一。 即以以下形式对异步函数进行紧凑声明：</cn><br>
+auto Socket::AsyncRead(int count) { struct awaiter {…}; return awaiter{this, count}) };
+2. Another approach considered and rejected was to have an operator await function found via ADL andhaving it to return an awaitable_type that should have await_xxx member functions defined. It was found more verbose than the proposed alternative.<br>
+<cn>另一种被考虑和拒绝的方法是通过ADL找到一个操作员等待函数，并让它返回应该定义了await_xxx成员函数的awaitable_type。 人们发现它比拟议的替代方案更为冗长。</cn></p>
+</blockquote>
+
+<p><strong>Bikeshed</strong>: await_suspend_needed, await_pre_suspend, await_pre_resume<br>
+<cn><strong>具有争议的话题</strong>：await_suspend_needed, await_pre_suspend, await_pre_resume</cn></p>
+
+<h3 id="yield-statement-cn-yield语句-cn">yield statement <cn>yield语句</cn></h3>
+
+<p>A yield statement is a statement of form:<br>
+<cn>yield语句是具有以下格式的语句：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	yield expression;
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	yield braced<span style="color:#f92672">-</span>init<span style="color:#f92672">-</span>list;
+</code></pre></div>
+<p>yield&lt;something&gt;; is equivalent to<br>
+<cn>yield&lt;something&gt;; 等同于</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	(<span style="color:#66d9ef">void</span>)(await <span style="color:#f92672">&lt;</span>Promise<span style="color:#f92672">&gt;</span>.yield_value(<span style="color:#f92672">&lt;</span>something<span style="color:#f92672">&gt;</span>))
+</code></pre></div>
+<p>Where a &lt;Promise&gt; refers to the coroutine promise of the enclosing resumable function<br>
+<cn>其中&lt;Promise&gt;指的是封闭的可恢复函数的协程承诺</cn></p>
+
+<blockquote>
+<p><strong>Design note</strong>: yield is a popular identifier, it is used in the standard library, e.g. this_thread::yield(). Introducing a yield keyword will break existing code. Having a two word keyword, such as yield return could be another choice.<br>
+<cn>设计说明：yield是一个流行的标识符，它在标准库中使用，例如 this_thread :: yield()。 引入yield关键字将破坏现有代码。 拥有两个单词的关键字yield return可能是另一种选择。</cn><p>
+Another alternative is to make yield a context-sensitive keyword that acts like a keyword at a statementlevel and as an identifier otherwise. To disambiguate access to a yield variable or a function, yield has to be prefixed by ::yield, -&gt;yield and .yield. This will still break some existing code, but allows an escape hatch to patch up the code without having to rename yield function which could be defined by the libraries a user have no source access to.<br>
+<cn>另一种选择是使yield产生上下文相关的关键字，该关键字的作用类似于语句级别的关键字，否则用作标识符。 为了消除对yield变量或函数的歧义，yield必须以:: yield，-&gt; yield和.yield开头。 这仍然会破坏一些现有的代码，但是允许使用转义填充来修补代码，而不必重命名用户无法访问源代码的库定义的yield函数。</cn></p>
+</blockquote>
+
+<h3 id="return-statement-cn-return语句-cn">Return statement <cn>return语句</cn></h3>
+
+<p>A return statement in a resumable function in a form return expression; is equivalent to:<br>
+<cn>可恢复函数中的return语句，形式为 return expression； 等效于：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	{ promise<span style="color:#f92672">-</span>expr.set_result(expression); <span style="color:#66d9ef">goto</span> end<span style="color:#f92672">-</span>label; }
+</code></pre></div>
+<p>A return statement in a resumable function in a form return braced-init-list; is equivalent to:<br>
+<cn>可恢复函数中的return语句，形式为return braced-init-list;等效于：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	{ promise<span style="color:#f92672">-</span>expr.set_result(braced<span style="color:#f92672">-</span>init<span style="color:#f92672">-</span>list); <span style="color:#66d9ef">goto</span> end<span style="color:#f92672">-</span>label; }
+</code></pre></div>
+<p>A return statement in a resumable function in a form return; is equivalent to:<br>
+<cn>可恢复函数中的return语句，形式为return ;等效于：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	{ promise<span style="color:#f92672">-</span>expr.set_result(); <span style="color:#66d9ef">goto</span> end<span style="color:#f92672">-</span>label; }
+</code></pre></div>
+<p>Where end-label is a label at the end of the user provided body of the resumable function, just prior  to the await &lt;promise-expr&gt;.final_suspend().<br>
+<cn>其中end-label是位于用户提供的可恢复函数的正文末尾的标签，紧接在await&lt;promise-expr&gt;.final_suspend()之前。</cn></p>
+
+<p>If resumable function does not have return statements in the form return expression; or return bracedinit-list; then the function acts as if there is an implicit return; statement at the end of the function.<br>
+<cn>如果可恢复函数不具有return表达式形式的return语句； 或返回bracedinit-list; 那么该函数就好像函数末尾的隐式 return ；语句一样。</cn></p>
+
+<h3 id="await-for-statement-cn-await-for-语句-cn">await-for statement <cn>await-for 语句</cn></h3>
+
+<p>An await-for statement of the form:<br>
+<cn>await-for 格式：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	<span style="color:#66d9ef">for</span> await ( <span style="color:#66d9ef">for</span><span style="color:#f92672">-</span>range<span style="color:#f92672">-</span>declaration : expression ) statement
+</code></pre></div>
+<p>is equivalent to<br>
+<cn>等效于</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">{
+	<span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;&amp;</span> __range <span style="color:#f92672">=</span> expression;
+	<span style="color:#66d9ef">for</span> ( <span style="color:#66d9ef">auto</span> __begin <span style="color:#f92672">=</span> await begin<span style="color:#f92672">-</span>expr,
+		__end <span style="color:#f92672">=</span> end<span style="color:#f92672">-</span>expr;
+		__begin <span style="color:#f92672">!=</span> __end;
+		await <span style="color:#f92672">++</span>__begin )
+	{
+		<span style="color:#66d9ef">for</span><span style="color:#f92672">-</span>range<span style="color:#f92672">-</span>declaration <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>__begin;
+		statement
+	}
+}
+</code></pre></div>
+<p>where begin-expr and end-expr are defined as described in N3936/[stmt.ranged]/1.<br>
+<cn>其中begin-expr和end-expr定义在N3936 / [stmt.ranged] / 1。</cn></p>
+
+<p>The rationale for annotating begin-expr and ++ with await is as follows:<br>
+<cn>await的begin-expr和++的原理注释如下：</cn></p>
+
+<p>A model for consuming values from an asynchronous input stream looks like this:<br>
+<cn>消费异步输入流中的值的模型如下所示：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">for</span> (;;) {
+	initiate async <span style="color:#a6e22e">pull</span>()
+	wait <span style="color:#66d9ef">for</span> completion of async
+	<span style="color:#66d9ef">if</span> (no more)
+		<span style="color:#66d9ef">break</span>;
+	process value
+}
+</code></pre></div>
+<p>We need to map this to iterators. The closest thing is an input_iterator.<br>
+<cn>我们需要将此映射到迭代器。 最接近的是input_iterator。</cn></p>
+
+<p>For an input_iterator, frequent implementation of end() is a tag value that makes iterator equality comparison check for the end of the sequence, therefore, != end() is essentially an end-of-stream check.<br>
+<cn>对于input_iterator，end()的常见实现是一个标记值，该值使迭代器通过相等性比较检查序列的结尾，因此，!=end()本质上是流结束检查。</cn></p>
+
+<p>So, begin() =&gt; async pull, therefore await is needed<br>
+<cn>因此begin() =&gt; async pull 需要等待</cn></p>
+
+<p>++<strong>begin =&gt; async pull, therefore await is needed<br>
+<cn>因此++</strong>begin =&gt; async pull 需要等待</cn></p>
+
+<p>!= end() – is end-of-stream check post async pull, no need for await<br>
+<cn>!= end() – 是流结束的检测post async pull, 不需要等待</cn></p>
+
+<blockquote>
+<p>Design note: We implemented two variants of await-for statement to evaluate their aesthetical appeal and typing convenience. One form was for await(x:S) , another await for(x:S)<br>
+<cn>设计说明：我们实现了等待声明的两种变体，以评估其美学吸引力和打字便利性。 一种形式是等待（x：S），另一种形式是for(x：S)</cn>
+Even though our initial choice was await for, we noticed that the brain was so hardwired to read things starting with for as loops, that await for did not register as loop when reading the code. <br>
+<cn>即使我们最初的选择是await for，我们也注意到大脑是如此结实，很难读取以for循环开头的内容，因此在读取代码时，await for并没有注册为循环。</cn></p>
+</blockquote>
+
+<h3 id="trivial-awaitable-types-cn-普通的等待类型-cn">Trivial awaitable types <cn>普通的等待类型</cn></h3>
+
+<p>Standard library provides three awaitable types defined as follows:<br>
+<cn>标准库提供了三种等待类型，定义如下：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">namespace</span> std {
+	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">suspend_always</span> 
+	{
+		<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">await_ready</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> false; }
+		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">await_suspend</span>(std<span style="color:#f92672">::</span>coroutine_handle<span style="color:#f92672">&lt;&gt;</span>) {}
+		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">await_resume</span>() {}
+	};
+	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">suspend_never</span> 
+	{
+		<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">await_ready</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> true; }
+		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">await_suspend</span>(std<span style="color:#f92672">::</span>coroutine_handle<span style="color:#f92672">&lt;&gt;</span>) {}
+		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">await_resume</span>() {}
+	};
+	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">suspend_if</span>
+	{
+		<span style="color:#66d9ef">bool</span> ready;
+		suspend_if(<span style="color:#66d9ef">bool</span> condition)<span style="color:#f92672">:</span> ready(<span style="color:#f92672">!</span>condition){}
+		<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">await_ready</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> ready; }
+		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">await_suspend</span>(std<span style="color:#f92672">::</span>coroutine_handle<span style="color:#f92672">&lt;&gt;</span>) {}
+		<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">await_resume</span>() {}
+	};
+}
+</code></pre></div>
+<p>These types are used in implementations of coroutine promises. Though they are trivial to implement, including them in the standard library eliminates the need for every library designer from doing their own implementation.<br>
+<cn>这些类型用于协程诺言的实现。 尽管它们实现起来很简单，但是将它们包含在标准库中消除了每个库设计人员进行自己的实现的需要。</cn></p>
+
+<p>For example, generator&lt;T&gt; coroutine listed in the Appendix A, defines yield_value member function as follows:<br>
+<cn>例如，附录A中列出的generator&lt;T&gt;协程定义了yield_value成员函数，如下所示：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	std<span style="color:#f92672">::</span>suspend_always promise_type<span style="color:#f92672">::</span>yield_value(T <span style="color:#66d9ef">const</span><span style="color:#f92672">&amp;</span> v) 
+	{
+		<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>current_value <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>v;
+		<span style="color:#66d9ef">return</span>{};
+	}
+</code></pre></div>
+<h3 id="an-expository-resumable-function-implementation-cn-一个说明性的可恢复函数实现-cn">An expository Resumable Function Implementation <cn>一个说明性的可恢复函数实现</cn></h3>
+
+<blockquote>
+<p>Note: The following section is for illustration purposes only. It does not prescribe how resumable functions must be implemented.<br>
+<cn>注意：以下部分仅用于说明目的。 它没有规定必须如何实现可恢复函数</cn></p>
+</blockquote>
+
+<p>Given a user authored function:<br>
+<cn>给定一个用户创作的函数：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	R <span style="color:#a6e22e">foo</span>(T1 a, T2 b) { body<span style="color:#f92672">-</span>containing<span style="color:#f92672">-</span>suspend<span style="color:#f92672">-</span>resume<span style="color:#f92672">-</span>points }
+</code></pre></div>
+<p>Compiler can constructs a function that behaves as if the following code was generated:<br>
+<cn>编译器可以构造一个函数，其行为类似于生成以下代码：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">R <span style="color:#a6e22e">foo</span>(T1 a, T2 b) {
+	<span style="color:#66d9ef">using</span> __traits <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>coroutine_traits<span style="color:#f92672">&lt;</span>R, T1, T2<span style="color:#f92672">&gt;</span>;
+	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">__Context</span> 
+	{
+		__traits<span style="color:#f92672">::</span>promise_type _Promise;
+		T1 a;
+		T2 b;
+		<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> U1, <span style="color:#66d9ef">typename</span> U2<span style="color:#f92672">&gt;</span>
+		__Context(U1<span style="color:#f92672">&amp;&amp;</span> a, U2<span style="color:#f92672">&amp;&amp;</span> b) <span style="color:#f92672">:</span> a(forward<span style="color:#f92672">&lt;</span>U1<span style="color:#f92672">&gt;</span>(a)), b(forward<span style="color:#f92672">&lt;</span>U2<span style="color:#f92672">&gt;</span>(b)) {}
+		<span style="color:#66d9ef">void</span> <span style="color:#66d9ef">operator</span>()() <span style="color:#66d9ef">noexcept</span> 
+		{
+			await _Promise.initial_suspend();
+			<span style="color:#66d9ef">try</span> 
+			{ body<span style="color:#f92672">-</span>containing<span style="color:#f92672">-</span>suspend<span style="color:#f92672">-</span>resume<span style="color:#f92672">-</span>points<span style="color:#f92672">-</span>with<span style="color:#f92672">-</span>some<span style="color:#f92672">-</span>changes }
+			<span style="color:#66d9ef">catch</span> (...) { _Promise.set_exception(std<span style="color:#f92672">::</span>current_exception()); }
+			__return_label:
+			await _Promise.final_suspend();
+			<span style="color:#f92672">&lt;</span>deallocate<span style="color:#f92672">-</span>frame<span style="color:#f92672">&gt;</span> (<span style="color:#66d9ef">this</span>, <span style="color:#66d9ef">sizeof</span>(__Context) <span style="color:#f92672">+</span> <span style="color:#f92672">&lt;</span>X<span style="color:#f92672">&gt;</span>);
+		}
+	};
+	
+	<span style="color:#66d9ef">auto</span> mem <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span>allocate<span style="color:#f92672">-</span>frame<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">sizeof</span>(__Context) <span style="color:#f92672">+</span> <span style="color:#f92672">&lt;</span>X<span style="color:#f92672">&gt;</span>);
+	__Context <span style="color:#f92672">*</span> coro <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+	<span style="color:#66d9ef">try</span> 
+	{
+		coro <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> (mem) __Context(a, b);
+		<span style="color:#66d9ef">auto</span> result <span style="color:#f92672">=</span> __traits<span style="color:#f92672">::</span>get_return_object(
+		std<span style="color:#f92672">::</span>coroutine_handle<span style="color:#f92672">&lt;</span>__traits<span style="color:#f92672">::</span>promise_type<span style="color:#f92672">&gt;::</span>from_promise(<span style="color:#f92672">&amp;</span>coro<span style="color:#f92672">-&gt;</span>__Promise);
+		(<span style="color:#f92672">*</span>coro)();
+		<span style="color:#66d9ef">return</span> result;
+	}
+	<span style="color:#66d9ef">catch</span> (...) {
+		<span style="color:#66d9ef">if</span> (coro) coro<span style="color:#f92672">-&gt;~</span>__Context();
+		<span style="color:#f92672">&lt;</span>deallocate<span style="color:#f92672">-</span>frame<span style="color:#f92672">&gt;</span> (mem, <span style="color:#66d9ef">sizeof</span>(__Context) <span style="color:#f92672">+</span> <span style="color:#f92672">&lt;</span>X<span style="color:#f92672">&gt;</span>);
+		<span style="color:#66d9ef">throw</span>;
+	}
+}
+</code></pre></div>
+<p>Where, &lt;X&gt; is a constant representing the number of bytes that needs to be allocated to accommodate variables with automatic storage duration in the body of the resumable function and platform specific data that is needed to support resume and suspend.<br>
+<cn>其中，&lt;X&gt;是一个常量，表示需要分配的字节数，以容纳具有可恢复函数的主体中具有自动生命周期的变量以及支持恢复和挂起所需的平台特定数据。</cn></p>
+
+<p>Access to variables and temporaries with automatic storage duration in the body of operator() should be relative to “this” pointer at the offset equal to sizeof(<em>this).<br>
+<cn>在operator()主体中访问具有自动生命周期的变量和临时变量应相对于“ this”指针，其偏移量等于sizeof(</em> this)。</cn></p>
+
+<p>&lt;body-containing-suspend-resume-points-with-some-changes&gt; is identical to &lt;body-containingsuspend-resume-points&gt; with the exception that await operators and yield, await-for statements, and return statements are transformed as described in earlier sections, __return_label is the &lt;end-label&gt;that return and await refer to and accesses to formal parameters a, b are replaced with accesses to member variables a and b of <strong>Context class.<br>
+<cn>&lt;body-suspend-resume-points-with-changes&gt;与&lt;body- contains-suspend-resume-points&gt;相同，不同之处在于await操作符和yield，await-for语句和return语句的转换如前面部分所诉，</strong>return_label是return和await引用的&lt;end-label&gt;，对形式参数a，b的访问将替换为对__Context类的成员变量a和b的访问。</cn></p>
+
+<h2 id="coroutines-in-environments-where-exceptions-are-unavailable-banned-cn-无法使用-禁止异常的环境中的协同程序-cn">Coroutines in environments where exceptions are unavailable / banned <cn>无法使用/禁止异常的环境中的协同程序</cn></h2>
+
+<p>C++ exceptions represent a barrier to adoption of full power of C++. While this is unfortunate and may be rectified in the future, the current experience shows that kernel mode software, embedded software for devices and airplanes [JSF] forgo the use of C++ exceptions for various reasons.<br>
+<cn>C++异常成为全面采用C++的障碍。 尽管这很不幸，并且将来可能会纠正，但当前的经验表明，出于各种原因，内核模式软件，用于设备和飞机的嵌入式软件[JSF]放弃使用C++异常。</cn></p>
+
+<p>Making coroutine fully dependent on C++ exceptions will limit their usefulness in contexts where asynchronous programming help is especially valuable (kernel mode drivers, embedded software, etc).<br>
+<cn>使协程完全依赖C++异常将限制它们在异步编程帮助特别有价值的环境（内核模式驱动程序，嵌入式软件等）中的使用。</cn></p>
+
+<p>The following sections described how exceptions can be avoided in implementation and applications ofresumable functions.<br>
+<cn>以下各节描述如何在可恢复函数的实现和应用中避免异常。</cn></p>
+
+<h3 id="allocation-failure-cn-分配失败-cn">Allocation failure <cn>分配失败</cn></h3>
+
+<p>To enable handling of allocation failures without relying on exception mechanism, coroutine_traits specialization can declare an optional static member function  get_return_object_on_allocation_failure.<br>
+<cn>为了在不依赖异常机制的情况下处理分配失败，coroutine_traits专业化可以声明一个可选的静态成员函数 get_return_object_on_allocation_failure.</cn></p>
+
+<p>If get_return_object_on_allocation_failure member function is present, it is assumed that an allocator’s allocate function will violate the standard requirements and will return nullptr in case of an allocation failure.<br>
+<cn>如果存在get_return_object_on_allocation_failure成员函数，则假定分配器的分配函数将违反标准要求，并在分配失败的情况下返回nullptr。</cn></p>
+
+<p>If an allocation has failed, a resumable function will use static member function get_return_object_on_allocation_failure() to construct the return value.<br>
+<cn>如果分配失败，则可恢复函数将使用静态成员函数get_return_object_on_allocation_failure()构造返回值。</cn></p>
+
+<p>The following is an example of such specialization<br>
+<cn>以下是这种特殊化的示例</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">namespace</span> std 
+{
+	<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T, <span style="color:#66d9ef">typename</span>... Ts<span style="color:#f92672">&gt;</span>
+	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">coroutine_traits</span><span style="color:#f92672">&lt;</span>kernel_mode_future<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>, Ts...<span style="color:#f92672">&gt;</span> 
+	{
+		<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span>... Us<span style="color:#f92672">&gt;</span>
+		<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">auto</span> get_allocator(Us<span style="color:#f92672">&amp;&amp;</span>...) {<span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>kernel_allocator<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span>{}; }
+		<span style="color:#66d9ef">using</span> promise_type <span style="color:#f92672">=</span> kernel_mode_resumable_promise<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>;
+		<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">auto</span> <span style="color:#a6e22e">get_return_object_on_allocation_failure</span>() { <span style="color:#960050;background-color:#1e0010">…</span> }
+	};
+}
+</code></pre></div>
+<h3 id="generalizing-coroutine-s-promise-set-exception-cn-概括协程的promise-set-exception-cn">Generalizing coroutine&rsquo;s promise set_exception <cn>概括协程的promise set_exception</cn></h3>
+
+<p>In exception-less environment, a requirement on set_exception member of coroutine promise needs to be relaxed to be able to take a value of an arbitrary error type E and not be limited to just the values of type std::exception_ptr. In exception-less environment, not only std::exception_ptr type may not be supported, but even if it were supported it is impossible to extract an error from it without relying on throw and catch mechanics.<br>
+<cn>在无异常的环境中，需要放松对协程Promise的set_exception成员的要求，以便能够采用任意错误类型E的值，而不仅限于std :: exception_ptr类型的值。 在无异常的环境中，不仅可能不支持std::exception_ptr类型，而且即使支持该类型，也不能在不依靠抛出和捕获机制的情况下从中提取错误。</cn></p>
+
+<h3 id="await-expression-unwrapping-of-an-eventual-value-cn-等待表达式-展开最终值-cn">Await expression: Unwrapping of an eventual value <cn>等待表达式：展开最终值</cn></h3>
+
+<p>As described earlier await cast-expression expands into an expression equivalent of:<br>
+<cn>如前所述，await cast-expression扩展为以下表达式：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">{
+	<span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;&amp;</span> __expr <span style="color:#f92672">=</span> cast<span style="color:#f92672">-</span>expression;
+	<span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>await<span style="color:#f92672">-</span>ready<span style="color:#f92672">-</span>expr ) 
+	{
+		await<span style="color:#f92672">-</span>suspend<span style="color:#f92672">-</span>expr;
+		suspend<span style="color:#f92672">-</span>resume<span style="color:#f92672">-</span>point
+	}
+	cancel<span style="color:#f92672">-</span>check;
+	<span style="color:#66d9ef">return</span> await<span style="color:#f92672">-</span>resume<span style="color:#f92672">-</span>expr;
+}
+</code></pre></div>
+<p>Where cancel-check is expanded as<br>
+<cn>其中cancel-check扩展为:</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">	<span style="color:#66d9ef">if</span> ( promise<span style="color:#f92672">-</span>expr.cancellation_requested() ) <span style="color:#66d9ef">goto</span> end<span style="color:#f92672">-</span>label;
+</code></pre></div>
+<p>A straightforward implementation of await_resume() for getting an eventual value from the future&lt;T&gt; will call .get() that will either return the stored value or throw an exception. If unhandled, an exception will be caught by a catch(…) handler of the resumable function and stored as an eventual result in a coroutine return object.<br>
+<cn>用于从future&lt;T&gt;获取最终值的await_resume()的直接实现将调用.get()，它将返回存储的值或引发异常。如果未处理，则异常将被可恢复函数的catch(…)处理程序捕获，并作为最终结果存储在协程返回对象中。</cn></p>
+
+<p>In the environments where exceptions are not allowed, implementation can probe for success or failure of the operation prior to resuming of the coroutine and use &lt;promise&gt;.set_exception to convey the failure to the promise. Coroutine promise, in this case, need to have cancellation_requested() to return true if an error is stored in the promise.<br>
+<cn>在不允许异常的环境中，实现可以在恢复协程之前探测操作的成功或失败，并使用&lt;promise&gt;.set_exception将失败传达给promise。 在这种情况下，如果在promise中存储了错误，则协程promise需要具有cancel_requested()来返回true。</cn></p>
+
+<p>Here is how await_suspend may be defined for our hypothetical kernel_future&lt;T&gt; as follows:<br>
+<cn>这是为假设的kernel_future&lt;T&gt;定义await_suspend的方式，如下所示：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Promise<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> kernel_future<span style="color:#f92672">::</span>await_suspend(std<span style="color:#f92672">::</span>coroutine_handle<span style="color:#f92672">&lt;</span>Promise<span style="color:#f92672">&gt;</span> p) 
+{
+	<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>then([p](kernel_future<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">&amp;</span> result) 
+	{
+		<span style="color:#66d9ef">if</span> (result.has_error())
+		{
+			p.promise().set_exception(result.error());
+		}
+		p(); <span style="color:#75715e">// resume the coroutine
+</span><span style="color:#75715e"></span>	});
+}
+</code></pre></div>
+<blockquote>
+<p>Appendix D demonstrates a complete implementation of adapters for boost::future, utilizing exceptionless propagation technique described above.<br>
+<cn>附录D演示了boost :: future适配器的完整实现,就使用了上述的无异常传播技术。</cn></p>
+</blockquote>
+
+<h3 id="await-expression-failure-to-launch-an-asynchronous-operation-cn-等待表达式-无法启动异步操作-cn">Await expression: Failure to launch an asynchronous operation <cn>等待表达式：无法启动异步操作</cn></h3>
+
+<p>If an await_suspend function failed to launch an asynchronous operation, it needs to prevent suspension of a resumable function at the await point. <br>
+<cn>如果await_suspend函数未能启动异步操作，则需要防止在等待点暂停可恢复函数。 </cn><br>
+Normally, it would have thrown an exception and would have avoided suspend-resume-point. <br>
+<cn>通常，它将引发异常，并使suspend-resume-point无效。 </cn><br>
+In the absence of exceptions, we can require that await_suspend must return false, if it failed to launch an operation and true otherwise. <br>
+<cn>在没有异常的情况下，我们可以要求await_suspend如果启动操作失败，则必须返回false，否则返回true。 </cn><br>
+If false is returned from await_suspend, then coroutine will not be suspended and will continue execution. <br>
+<cn>如果从await_suspend返回false，那么协程将不会被挂起并继续执行。 </cn><br>
+Failure can be indicate via set_exception mechanism as described in the previous section.<br>
+<cn>可以通过上一部分中所述的set_exception机制指示失败。</cn></p>
+
+<p>With all of the changes described in this section, await expr will be expanded into equivalent of:<br>
+<cn>有了本节中描述的所有更改，await expr将扩展为以下内容：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">{
+	<span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;&amp;</span> __expr <span style="color:#f92672">=</span> cast<span style="color:#f92672">-</span>expression;
+	<span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span> await<span style="color:#f92672">-</span>ready<span style="color:#f92672">-</span>expr <span style="color:#f92672">&amp;&amp;</span> await<span style="color:#f92672">-</span>suspend<span style="color:#f92672">-</span>expr)
+	{
+		suspend<span style="color:#f92672">-</span>resume<span style="color:#f92672">-</span>point
+	}
+	cancel<span style="color:#f92672">-</span>expression;
+	<span style="color:#66d9ef">return</span> await<span style="color:#f92672">-</span>resume<span style="color:#f92672">-</span>expr;
+}
+</code></pre></div>
+<p>With the extensions described above it is possible to utilize await and resumable functions in the environment where exceptions are banned or not supported.<br>
+<cn>通过上述扩展，可以在禁止或不支持异常的环境中使用等待和可恢复函数。</cn></p>
+
+<h2 id="asynchronous-cancellation-cn-异步取消-cn">Asynchronous cancellation <cn>异步取消</cn></h2>
+
+<p>An attempt to cancel a coroutine that is currently suspended awaiting completion of an asynchronous I/O, can race with the resumption of a coroutine due to I/O completion. The coroutine model describedin this paper can be extended to tackle asynchronous cancellation. Here is a sketch.<br>
+<cn>尝试取消当前等待异步I/O完成而暂停的协程，可能会由于I/O完成而与协程恢复竞争。 本文描述的协程模型可以扩展为解决异步取消。 这是草图。</cn></p>
+
+<p>A coroutine promise can expose set_cancel_routine(Fn) function, where Fn is a function or a function object returning a value convertible to bool. <br>
+<cn>协程承诺可以公开set_cancel_routine（Fn）函数，其中Fn是返回可转换为bool的值的函数或函数对象。 </cn><br>
+A set_cancel_routine function should return true if cancel_routine is set and there is no cancellation in progress and false otherwise.<cn>
+<cn>如果设置了cancel_routine并且没有进行中的取消，则set_cancel_routine函数应返回true，否则返回false。</cn></p>
+
+<p>await_suspend(std::coroutine_handle&lt;Promise&gt; rh), in addition to subscribing to get a completion of an asynchronous operation can use rh.promise().set_cancel_routine(Fn) to provide a callback that can attempt to cancel an asynchronous operation.<br>
+<cn>await_suspend(std::coroutine_handle&lt;Promise&gt; rh)，除了订阅来获取异步操作完成事件外，还可以使用rh.promise().set_cancel_routine(Fn)提供可以尝试取消异步操作的回调。 </cn></p>
+
+<p>If a coroutine needs to be cancelled, it invokes a cancel_routine if one is currently associated with the coroutine promise. <br>
+<cn>如果协程需要取消，则它将调用cancel_routine，如果协程promise刚好有这个函数的话。 </cn><br>
+If cancel_routine returns true, it indicates that the operation in progress was successfully cancelled and the coroutine will not be resumed by the asynchronous operation. <br>
+<cn>如果cancel_routine返回true，则表明正在进行的操作已成功取消，并且异步操作将不会继续执行协程。 </cn><br>
+Thus, the execution of the coroutine is under full control of the caller. <br>
+<cn>因此，协程的执行完全受调用方控制。</cn>
+If cancel_routine returns false, it means that an asynchronous operation cannot be cancelled and coroutine may have already been resumed or will be resumed at some point in the future. <br>
+<cn>如果cancel_routine返回false，则意味着无法取消异步操作，协程可能已经恢复或将来会恢复。 </cn>
+Thus, coroutine resources cannot be released until pending asynchronous operation resumes the coroutine.<br>
+<cn>因此，在挂起的异步操作恢复协程之前，无法释放协程资源。</cn></p>
+
+<p>The following is an example of extending sleep_for awaiter from Appendix C to support asynchronous cancellation.<br>
+<cn>以下是从附录C扩展sleep_for awaiter以支持异步取消的示例。</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Promise<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">bool</span> await_suspend(std<span style="color:#f92672">::</span>coroutine_handle<span style="color:#f92672">&lt;</span>Promise<span style="color:#f92672">&gt;</span> resume_cb) 
+{
+	<span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span> promise <span style="color:#f92672">=</span> resume_cb.promise();
+	<span style="color:#66d9ef">if</span> (promise.begin_suspend())
+	{
+		timer <span style="color:#f92672">=</span> CreateThreadpoolTimer(TimerCallback, resume_cb.to_address(), <span style="color:#ae81ff">0</span>);
+		<span style="color:#66d9ef">if</span> (timer)
+		{
+			promise.set_cancel_routine(timer, TimerCancel);
+			SetThreadpoolTimer(timer, (PFILETIME)<span style="color:#f92672">&amp;</span>duration, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+			promise.done_suspend();
+			<span style="color:#66d9ef">return</span> true;
+		}
+		<span style="color:#66d9ef">else</span> 
+		{
+			promise.set_exception(
+				std<span style="color:#f92672">::</span>system_error(std<span style="color:#f92672">::</span>system_category(), GetLastError());
+		}
+	}
+	promise.cancel_suspend();
+	<span style="color:#66d9ef">return</span> false;
+}
+</code></pre></div>
+<p>Where begin_suspend, cancel_suspend and done_suspend are used to help to solve races when cancellation is happening concurrently with invocation of await_suspend. <br>
+<cn>当取消与调用await_suspend同时发生时，begin_suspend，cancel_suspend和done_suspend用于帮助解决竞争。</cn></p>
+
+<p>We do not propose this mechanism yet as we would like to gain more experience with developing libraries utilizing resumable functions described in this paper.<br>
+<cn>我们尚未提出这种机制，因为我们希望获得更多利用本文描述的可恢复函数开发库的经验。</cn></p>
+
+<h2 id="stateful-allocators-support-cn-有状态分配者支持-cn">Stateful Allocators Support <cn>有状态分配者支持</cn></h2>
+
+<p>Current proposal allows coroutines to be used with stackless and stackful allocators. <br>
+<cn>当前的提议允许协程与无栈和栈式分配器一起使用。 </cn><br>
+To use a stateful allocator, coroutine traits’s get_allocator need to select which parameters to a resumable function that carry an allocator to be used to allocate the coroutine state. <br>
+<cn>要使用有状态分配器，协程特征的get_allocator需要选择可恢复函数的哪些参数，该参数带有分配器以用于分配协程状态。 </cn><br>
+Library designer can choose different strategies, he/she could use be std::allocator_arg_t tag argument followed by an allocator, or decide that allocator, if present, should be the first or the last parameter to a resumable function.<br>
+<cn>库设计人员可以选择不同的策略，他/她可以使用std :: allocator_arg_t标记参数，后跟分配器，或者确定该分配器（如果存在）应该是可恢复函数的第一个或最后一个参数。</cn></p>
+
+<p>For example, using a generator coroutine from Appendix A and providing the following coroutine traits will enable stateful allocator use.<br>
+<cn>例如，使用附录A中的生成程序协程并提供以下协程特性将使有状态分配器可以使用。</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">namespace</span> std 
+{
+	<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> R, <span style="color:#66d9ef">typename</span> Alloc, <span style="color:#66d9ef">typename</span>... Ts<span style="color:#f92672">&gt;</span>
+	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">coroutine_traits</span><span style="color:#f92672">&lt;</span>generator<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span>, allocator_tag_t, Alloc, Ts...<span style="color:#f92672">&gt;</span> 
+	{
+		<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span>... Us<span style="color:#f92672">&gt;</span>
+		<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">auto</span> get_allocator(allocator_tag, Alloc a, Us<span style="color:#f92672">&amp;&amp;</span>...) 
+		{
+			<span style="color:#66d9ef">return</span> a;
+		}
+		<span style="color:#66d9ef">using</span> promise_type <span style="color:#f92672">=</span> generator<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;::</span>promise_type;
+	};
+}
+
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Alloc<span style="color:#f92672">&gt;</span>
+generator<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> fib(allocator_tag_t, Alloc, <span style="color:#66d9ef">int</span> n)
+{
+	<span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+	<span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+	<span style="color:#66d9ef">while</span> (n<span style="color:#f92672">--</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+	{
+		yield a;
+		<span style="color:#66d9ef">auto</span> next <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> b;
+		a <span style="color:#f92672">=</span> b;
+		b <span style="color:#f92672">=</span> next;
+	}
+}
+
+<span style="color:#66d9ef">extern</span> MyAlloc g_MyAlloc;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> v : fib(allocator_tag, g_MyAlloc, <span style="color:#ae81ff">35</span>)) 
+	{
+		std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> v <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+		<span style="color:#66d9ef">if</span> (v <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>)
+		<span style="color:#66d9ef">break</span>;
+	}
+}
+</code></pre></div>
+<h2 id="override-selection-of-coroutine-traits-cn-协程特征的优先选择-cn">Override Selection of Coroutine Traits <cn>协程特征的优先选择</cn></h2>
+
+<p>In Urbana, several people asked for a way to select coroutine traits to use with the resumable function without altering the function signature. One possible syntax for coroutine_traits selection override could be as follows:<br>
+<cn>在Urbana中，几个人要求一种选择协程特征以与可恢复函数一起使用而不改变函数签名的方法。 coroutine_traits选择覆盖的一种可能语法如下：</cn></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">generator<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> fib() <span style="color:#66d9ef">using</span>(my_coroutine_traits)
+{
+	body
+}
+</code></pre></div>
+<h2 id="proposed-standard-wording-cn-拟议标准措辞-cn">Proposed Standard Wording <cn>拟议标准措辞</cn></h2>
+
+<p>No wording is provided at the moment. <br>
+<cn>目前没有提供任何文字。</cn></p>
+
+<h2 id="acknowledgments-cn-致谢-cn">Acknowledgments <cn>致谢</cn></h2>
+
+<p>Great thanks to Artur Laksberg, Chandler Carruth, Gabriel Dos Reis, Deon Brewis, James McNellis, Stephan T. Lavavej, Herb Sutter, Pablo Halpern, Robert Schumacher, Michael Wong, Niklas Gustafsson, Nick Maliwacki, Vladimir Petter, Slava Kuznetsov, Oliver Kowalke, Lawrence Crowl, Nat Goodspeed, Christopher Kohlhoff for your review and comments and Herb, Artur, Deon and Niklas for trailblazing, proposing and implementing resumable functions v1. <br>
+<cn>非常感谢Artur Laksberg，Chandler Carruth，Gabriel Dos Reis，Deon Brewis，James McNellis，Stephan T.Lavavej，Herb Sutter，Pablo Halpern，Robert Schumacher，Michael Wong，Niklas Gustafsson，Nick Maliwacki，Vladimir Petter，Slava Kuznetsov，Oliver Koko ，Lawrence Crowl，Nat Goodspeed，Christopher Kohlhoff进行评论和评论，Herb，Artur，Deon和Niklas开拓性，提出并实现了可恢复函数v1。</cn></p><ul class="pa0">
   
    <li class="list">
      <a href="/tags/n4286" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">n4286</a>
@@ -166,7 +1254,68 @@
 
     <aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
     <p class="f5 b mb3">What&#39;s in this post</p>
-      
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#terms-and-definitions-cn-术语和定义-cn">Terms and Definitions <cn>术语和定义</cn></a>
+<ul>
+<li><a href="#coroutine-cn-协程-cn">Coroutine <cn>协程</cn></a></li>
+<li><a href="#coroutine-state-coroutine-frame-cn-协程状态-协程框架-cn">Coroutine State / Coroutine Frame <cn>协程状态/协程框架</cn></a></li>
+<li><a href="#coroutine-promise-cn-协程承诺-cn">Coroutine Promise <cn>协程承诺</cn></a></li>
+<li><a href="#coroutine-object-coroutine-handle-return-object-of-the-coroutine-cn-协程的对象-协程句柄-返回对象-cn">Coroutine Object / Coroutine Handle / Return Object of the Coroutine <cn>协程的对象/协程句柄/返回对象</cn></a></li>
+<li><a href="#generator-cn-生成器-cn">Generator <cn>生成器</cn></a></li>
+<li><a href="#stackless-coroutine-cn-无栈协程-cn">Stackless Coroutine <cn>无栈协程</cn></a></li>
+<li><a href="#stackful-coroutine-fiber-user-mode-thread-cn-堆栈协程-纤程-用户模式线程-cn">Stackful Coroutine / Fiber / User-Mode thread <cn>堆栈协程/纤程/用户模式线程</cn></a></li>
+<li><a href="#split-stack-linked-stack-segmented-stack-cn-拆分堆栈-链接堆栈-分段堆栈-cn">Split Stack / Linked Stack / Segmented Stack <cn>拆分堆栈/链接堆栈/分段堆栈</cn></a></li>
+<li><a href="#resumable-function-cn-可恢复函数-cn">Resumable Function <cn>可恢复函数</cn></a></li>
+</ul></li>
+<li><a href="#discussion-cn-讨论区-cn">Discussion <cn>讨论区</cn></a>
+<ul>
+<li><a href="#stackless-vs-stackful-cn-无堆栈与有堆栈-cn">Stackless vs Stackful <cn>无堆栈与有堆栈</cn></a></li>
+<li><a href="#implementation-experience-cn-实施经验-cn">Implementation Experience <cn>实施经验</cn></a></li>
+<li><a href="#asynchronous-i-o-cn-异步-i-o-cn">Asynchronous I/O <cn>异步 I/O</cn></a></li>
+<li><a href="#parent-stealing-parallel-computations-cn-父窃取并行计算-cn">Parent-stealing parallel computations <cn>父窃取并行计算</cn></a></li>
+<li><a href="#go-like-channels-and-goroutines-cn-类go语言的通道和goroutines-cn">Go-like channels and goroutines <cn>类go语言的通道和goroutines</cn></a></li>
+<li><a href="#reactive-streams-cn-反应流-cn">Reactive Streams <cn>反应流</cn></a></li>
+<li><a href="#as-a-producer-cn-作为生产者-cn">As a producer: <cn>作为生产者</cn></a></li>
+<li><a href="#resumable-lambdas-as-generator-expressions-cn-可恢复lambda作为生成器的表达式-cn">Resumable lambdas as generator expressions <cn>可恢复lambda作为生成器的表达式</cn></a></li>
+</ul></li>
+<li><a href="#conceptual-model-cn-概念模型-cn">Conceptual Model <cn>概念模型</cn></a>
+<ul>
+<li><a href="#resumable-function-cn-可恢复函数-cn-1">Resumable Function <cn>可恢复函数</cn></a>
+<ul>
+<li><a href="#design-note-cn-设计说明-cn">Design Note: <cn>设计说明</cn></a></li>
+</ul></li>
+<li><a href="#coroutine-traits-cn-协程特征-cn">Coroutine traits <cn>协程特征</cn></a></li>
+<li><a href="#allocation-and-parameter-copy-optimizations-cn-分配和参数复制优化-cn">Allocation and parameter copy optimizations <cn>分配和参数复制优化</cn></a></li>
+<li><a href="#auto-decltype-auto-return-type-cn-auto-decltype-auto-返回类型-cn">auto / decltype(auto) return type <cn>auto / decltype（auto）返回类型</cn></a></li>
+<li><a href="#c-does-not-need-generator-expressions-it-already-has-them-cn-c-不需要生成器表达式-它已经有了-cn">C++ does not need generator expressions… it already has them! <cn>C ++不需要生成器表达式……它已经有了！</cn></a></li>
+<li><a href="#coroutine-promise-requirements-cn-协程承诺要求-cn">Coroutine promise Requirements <cn>协程承诺要求</cn></a></li>
+<li><a href="#resumption-function-object-cn-可恢复函数对象-cn">Resumption function object <cn>可恢复函数对象</cn></a></li>
+<li><a href="#await-operator-cn-await操作符-cn">await operator <cn>await操作符</cn></a></li>
+<li><a href="#evaluation-of-await-expression-cn-await表达式的求值-cn">Evaluation of await expression <cn>await表达式的求值</cn></a></li>
+<li><a href="#yield-statement-cn-yield语句-cn">yield statement <cn>yield语句</cn></a></li>
+<li><a href="#return-statement-cn-return语句-cn">Return statement <cn>return语句</cn></a></li>
+<li><a href="#await-for-statement-cn-await-for-语句-cn">await-for statement <cn>await-for 语句</cn></a></li>
+<li><a href="#trivial-awaitable-types-cn-普通的等待类型-cn">Trivial awaitable types <cn>普通的等待类型</cn></a></li>
+<li><a href="#an-expository-resumable-function-implementation-cn-一个说明性的可恢复函数实现-cn">An expository Resumable Function Implementation <cn>一个说明性的可恢复函数实现</cn></a></li>
+</ul></li>
+<li><a href="#coroutines-in-environments-where-exceptions-are-unavailable-banned-cn-无法使用-禁止异常的环境中的协同程序-cn">Coroutines in environments where exceptions are unavailable / banned <cn>无法使用/禁止异常的环境中的协同程序</cn></a>
+<ul>
+<li><a href="#allocation-failure-cn-分配失败-cn">Allocation failure <cn>分配失败</cn></a></li>
+<li><a href="#generalizing-coroutine-s-promise-set-exception-cn-概括协程的promise-set-exception-cn">Generalizing coroutine&rsquo;s promise set_exception <cn>概括协程的promise set_exception</cn></a></li>
+<li><a href="#await-expression-unwrapping-of-an-eventual-value-cn-等待表达式-展开最终值-cn">Await expression: Unwrapping of an eventual value <cn>等待表达式：展开最终值</cn></a></li>
+<li><a href="#await-expression-failure-to-launch-an-asynchronous-operation-cn-等待表达式-无法启动异步操作-cn">Await expression: Failure to launch an asynchronous operation <cn>等待表达式：无法启动异步操作</cn></a></li>
+</ul></li>
+<li><a href="#asynchronous-cancellation-cn-异步取消-cn">Asynchronous cancellation <cn>异步取消</cn></a></li>
+<li><a href="#stateful-allocators-support-cn-有状态分配者支持-cn">Stateful Allocators Support <cn>有状态分配者支持</cn></a></li>
+<li><a href="#override-selection-of-coroutine-traits-cn-协程特征的优先选择-cn">Override Selection of Coroutine Traits <cn>协程特征的优先选择</cn></a></li>
+<li><a href="#proposed-standard-wording-cn-拟议标准措辞-cn">Proposed Standard Wording <cn>拟议标准措辞</cn></a></li>
+<li><a href="#acknowledgments-cn-致谢-cn">Acknowledgments <cn>致谢</cn></a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 
 

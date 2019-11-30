@@ -12,12 +12,14 @@
     
     
     <item>
-      <title>Translate_n4286_into_chinese</title>
+      <title>翻译协议n4286</title>
       <link>https://muliao.github.io/post/translate_n4286/</link>
       <pubDate>Tue, 19 Nov 2019 16:23:18 +0800</pubDate>
       
       <guid>https://muliao.github.io/post/translate_n4286/</guid>
-      <description>已经翻译完毕，准备记录过来。。。</description>
+      <description>&lt;p&gt;在了解c++协程时发现了整个文档，读完让自己对协程的了解更清晰了，解开了之前的不少迷惑。&lt;/p&gt;
+
+&lt;p&gt;边翻译边读的，把翻译的内容分享到这边。&lt;/p&gt;</description>
     </item>
     
   </channel>
