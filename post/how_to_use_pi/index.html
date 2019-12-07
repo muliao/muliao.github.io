@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Muliao&#39;s Blog  | 使用树莓派记录</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.59.1" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="使用树莓派记录" />
+<meta property="og:description" content="购买了个树莓派，记录下使用的过程，也为大家提供点帮助。
+
+安装的服务会随着需求慢慢增加，目前安装了
+
+
+网络打印服务 让只有usb连接的打印机可以使用网络访问，无线起来。
+webssh 让设备可以使用浏览器来连接树莓派。
+shiori 网络书签服务,有了自己的书签服务，就不担心网络上那些书签服务经常关门的问题了。
+dns服务 让内外网使用同一个域名访问树莓派上的服务。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://muliao.github.io/post/how_to_use_pi/" />
+<meta property="article:published_time" content="2019-12-07T19:51:08+08:00" />
+<meta property="article:modified_time" content="2019-12-07T19:51:08+08:00" />
+<meta itemprop="name" content="使用树莓派记录">
+<meta itemprop="description" content="购买了个树莓派，记录下使用的过程，也为大家提供点帮助。
+
+安装的服务会随着需求慢慢增加，目前安装了
+
+
+网络打印服务 让只有usb连接的打印机可以使用网络访问，无线起来。
+webssh 让设备可以使用浏览器来连接树莓派。
+shiori 网络书签服务,有了自己的书签服务，就不担心网络上那些书签服务经常关门的问题了。
+dns服务 让内外网使用同一个域名访问树莓派上的服务。
+">
+
+
+<meta itemprop="datePublished" content="2019-12-07T19:51:08&#43;08:00" />
+<meta itemprop="dateModified" content="2019-12-07T19:51:08&#43;08:00" />
+<meta itemprop="wordCount" content="443">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用树莓派记录"/>
+<meta name="twitter:description" content="购买了个树莓派，记录下使用的过程，也为大家提供点帮助。
+
+安装的服务会随着需求慢慢增加，目前安装了
+
+
+网络打印服务 让只有usb连接的打印机可以使用网络访问，无线起来。
+webssh 让设备可以使用浏览器来连接树莓派。
+shiori 网络书签服务,有了自己的书签服务，就不担心网络上那些书签服务经常关门的问题了。
+dns服务 让内外网使用同一个域名访问树莓派上的服务。
+"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-blue">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://muliao.github.io" class="f3 fw2 hover-white no-underline white-90 dib">
+      Muliao&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        ARTICLES
+      </p>
+      <h1 class="f1 athelas mb1">使用树莓派记录</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-12-07T19:51:08&#43;08:00">December 7, 2019</time>
+      
+      
+        <span class="f6 mv4 dib tracked"> - 3 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 443 words</span>
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>购买了个树莓派，记录下使用的过程，也为大家提供点帮助。</p>
+
+<p>安装的服务会随着需求慢慢增加，目前安装了</p>
+
+<ul>
+<li>网络打印服务 让只有usb连接的打印机可以使用网络访问，无线起来。</li>
+<li>webssh 让设备可以使用浏览器来连接树莓派。</li>
+<li>shiori 网络书签服务,有了自己的书签服务，就不担心网络上那些书签服务经常关门的问题了。</li>
+<li>dns服务 让内外网使用同一个域名访问树莓派上的服务。</li>
+</ul>
+
+<h2 id="烧录系统">烧录系统</h2>
+
+<p>有两种方式，这次安装把这两种都尝试了，还比较顺利。</p>
+
+<h3 id="首次安装使用noobs方式">首次安装使用NOOBS方式:</h3>
+
+<p>进入<a href="https://www.raspberrypi.org/downloads/noobs/">https://www.raspberrypi.org/downloads/noobs/</a> 选择NOOBS下载</p>
+
+<p>把sd卡按fat32格式化,然后将下载好的zip解压并把解压好的文件复制到sd卡中去</p>
+
+<p>把sd卡插回树莓派，接上显示器启动，就可以看到启动安装页面了，进行一些时区,网络等等的设置,就可以进入系统了。</p>
+
+<p>进入系统时会让你修改密码,更新系统，更新要比较久，慢慢等待。</p>
+
+<h3 id="使用usb启动">使用usb启动</h3>
+
+<p>系统安装好后,考虑sd卡读取比较慢，刚好手上有一个小固态盘，决定弄下usb的启动方式，这次usb的启动用的是第二种的烧录方式（用这个方式也可以作为初期安装的方法）。</p>
+
+<p>进入<a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a></p>
+
+<p>可以选择带不带桌面的系统，我这次安装是选择了lite包，毕竟只是当服务用，就不需要桌面了。</p>
+
+<p>下载Win32DiskImager,使用这个工具来烧录系统到固态盘。</p>
+
+<p>前面下载的lite包解压后就有img映像文件了,选择这个。</p>
+
+<p>设备选择固态盘的盘符。</p>
+
+<p>选择写入，等待写入完毕，这时就有了一个带系统的固态盘了，将它也插入到树莓派。( 如果是sd卡采用这种安装方式，此时插回去就可以启动树莓派了，因为我是要做usb启动，所以还得做另外的处理）</p>
+
+<p>usb的启动是参考这个文章来的<a href="树莓派4B配置U盘启动">https://www.quarkbook.com/?p=638</a>。</p>
+
+<p>大概是说之前的方案在4代中不能用了，新的方式是先从sd卡中boot起来，当启动系统时,通过修改配置把系统的路径改成了固态盘的系统，达到偷梁换柱的作用。</p>
+
+<p>关键的几步是这样:</p>
+
+<p>运行blkid,查看系统磁盘的一些信息。我的信息和文章的不太一样，应该是因为sd卡的系统是采用NOOBS安装的缘故，不过影响不大，记录下以下四个区的信息,以备后用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/dev/mmcblk0p6: LABEL_FATBOOT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;boot&#34;</span> LABEL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;boot&#34;</span> UUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;08E6-CEF8&#34;</span> TYPE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vfat&#34;</span> PARTUUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0008b216-06&#34;</span>
+/dev/mmcblk0p7: LABEL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;root&#34;</span> UUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;052fbaf6-220c-4c55-85da-7f74616e0e92&#34;</span> TYPE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ext4&#34;</span> PARTUUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0008b216-07&#34;</span>
+...
+/dev/sda1: LABEL_FATBOOT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;boot&#34;</span> LABEL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;boot&#34;</span> UUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;5203-DB74&#34;</span> TYPE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vfat&#34;</span> PARTUUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;6c586e13-01&#34;</span>
+/dev/sda2: LABEL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rootfs&#34;</span> UUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2ab3f8e1-7dc6-43f5-b0db-dd5759d51d4e&#34;</span> TYPE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ext4&#34;</span> PARTUUID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;6c586e13-02&#34;</span></code></pre></div>
+<p>修改/boot/cmdline.txt文件</p>
+
+<p>文件内容和文章的也不一样，也没关系，原理就是改路径嘛。</p>
+
+<p>修改内容中的root=/dev/mmcblk0p7成root=/dev/sda2 然后保存（文章中的是root=PARTUUID=xxxxx，这也是一种设备路径记录，使用UUID比/dev/sda这种模式更好，因为UUID不会被改名的），偷懒缘故，我还是使用了它远里的/dev的方式。</p>
+
+<p>重启启动系统</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	sudo reboot</code></pre></div>
+<p>查看是否使用固体盘的系统。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	findmnt -n -o SOURCE /</code></pre></div>
+<p>成功的话可以看到显示/dev/sda2</p>
+
+<p>通过查看磁盘大小</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	df -hl</code></pre></div>
+<p>会发现固态盘的容量并没有全部用上，采用以下指令调整系统大小</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo fdisk /dev/sda
+...
+Command <span style="color:#f92672">(</span>m <span style="color:#66d9ef">for</span> help<span style="color:#f92672">)</span>: p
+...
+	
+Device     Boot  Start     End Sectors  Size Id Type
+/dev/sda1         <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">532479</span>  <span style="color:#ae81ff">524288</span>  256M  c W95 FAT32 <span style="color:#f92672">(</span>LBA<span style="color:#f92672">)</span>
+/dev/sda2       <span style="color:#ae81ff">532480</span> <span style="color:#ae81ff">4390911</span> <span style="color:#ae81ff">3858432</span>  <span style="color:#ae81ff">1</span>.9G <span style="color:#ae81ff">83</span> Linux</code></pre></div>
+<p>需要把这里的/dev/sda2 的Start记录起来，以备后用。即记录532480</p>
+
+<p>继续输入指令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Command <span style="color:#f92672">(</span>m <span style="color:#66d9ef">for</span> help<span style="color:#f92672">)</span>: d
+...
+Command <span style="color:#f92672">(</span>m <span style="color:#66d9ef">for</span> help<span style="color:#f92672">)</span>: n
+...
+Select <span style="color:#f92672">(</span>default p<span style="color:#f92672">)</span>: p
+Partition number <span style="color:#f92672">(</span><span style="color:#ae81ff">2</span>-4, default <span style="color:#ae81ff">2</span><span style="color:#f92672">)</span>: <span style="color:#ae81ff">2</span>
+First sector <span style="color:#f92672">(</span><span style="color:#ae81ff">532481</span>-500118191, default <span style="color:#ae81ff">589815</span><span style="color:#f92672">)</span>: <span style="color:#ae81ff">532480</span> <span style="color:#f92672">(</span>enter the start value exactly as it was, the default will be wrong<span style="color:#f92672">)</span></code></pre></div>
+<p>前面记录的start数据就是在这里使用的，输入记录值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Last sector, +/-sectors or +/-size<span style="color:#f92672">{</span>K,M,G,T,P<span style="color:#f92672">}</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">540672</span>-500118191, default <span style="color:#ae81ff">500118191</span><span style="color:#f92672">)</span>: <span style="color:#f92672">(</span>press enter to accept default which is the full disk<span style="color:#f92672">)</span></code></pre></div>
+<p>按回车选择默认</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Do you want to remove the signature? <span style="color:#f92672">[</span>Y<span style="color:#f92672">]</span>es/<span style="color:#f92672">[</span>N<span style="color:#f92672">]</span>o: n</code></pre></div>
+<p>以上操作如果有写错的,按q退出fdisk即可。不会生效操作。</p>
+
+<p>如果没问题的话在下面提示时输入w，即生效操作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Command <span style="color:#f92672">(</span>m <span style="color:#66d9ef">for</span> help<span style="color:#f92672">)</span>: w</code></pre></div>
+<p>重启系统</p>
+
+<p>重启完成后输入</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">	df -hl</code></pre></div>
+<p>会发现磁盘完成了扩展</p>
+
+<p>还会发现boot分区使用的是/dev/sda1,即固态盘的第一个分区,虽然不是用这个分区boot的。完美的话还是要把这个修改下，通过修改fstab文件来修正。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/fstab</code></pre></div>
+<p>把里面的 /boot分区的路径改掉</p>
+
+<p>原来是PARTUUID=6c586e13-01,从上面的记录信息可以发现这个就是固态盘的boot分区uuid；把这个替换成sd卡的boot分区的uuid</p>
+
+<p>保存并重启即可。</p>
+
+<p>这时就完成了sd卡boot，使用固态盘系统的策略。但这样sd卡里面的root分区的很大的空间不就浪费了。当然要使用起来。还是通过编辑fstab来实现</p>
+
+<p>先创建要挂接的目录</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /home/pi/sdroot</code></pre></div>
+<p>然后在fstab中增加对应记录</p>
+
+<pre><code>PARTUUID=0008b216-07  /home/pi/sdroot               ext4    defaults,noatime  0       2
+</code></pre>
+
+<p>重启完后就可以用上这个空间了。</p>
+
+<h2 id="配置系统">配置系统</h2>
+
+<h3 id="网络配置">网络配置</h3>
+
+<p>首先是wifi,这个过程比较波折，试了多种方案，最后只有一个达到效果。</p>
+
+<p>使用命令:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo raspi-config</code></pre></div>
+<p>选择第二个的Network options</p>
+
+<p>选择N2 wi-fi</p>
+
+<p>然后输入SSID和密码，然后确定，完成配置（之前应该还会问你地区,选择CN，因为没有截图忘记是第几步问了)</p>
+
+<p>可以输入指令查看wifi是否启动成功</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ifconfig wlan0</code></pre></div>
+<p>正常这时是可以看到分配的ip了。</p>
+
+<p>打开配置文件/etc/wpa_supplicant/wpa_supplicant.conf</p>
+
+<p>可以看到里面记录了前面输入的ssid和密码,还有一行是</p>
+
+<pre><code>country=CN
+</code></pre>
+
+<p>这行很重要，之前按其他方式配置了这个conf，没有这行，一直不生效。</p>
+
+<p>wifi生效后，还需要给它设置一个固定ip，这样方便远程访问</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/dhcpcd.conf</code></pre></div>
+<p>在末尾添加</p>
+
+<pre><code>interface wlan0
+static ip_address=192.168.2.6/24
+static routers=192.168.2.1
+static domain_name_servers=192.168.2.1
+</code></pre>
+
+<p>接着重启设备，ip就设置为固定的2.6了</p>
+
+<p>有线网络插上线就生效了，但也需要一个固定ip，试了几个方法都没成功，会提示dhcp只能一个固定ip。后来采用了曲线救国的方法，在路由器中绑定eth0的mac地址和一个固定ip，这样重启后有线网络也会被设置成固定ip了。有线网卡的mac地址可以通过指令查看</p>
+
+<p>ifconfig eth0</p>
+
+<h3 id="开启ssh">开启ssh</h3>
+
+<p>网络配置好了后,就可以抛弃显示器，直接使用ssh远程登陆了，默认ssh是没有开启的。</p>
+
+<p>将sd卡和固态盘插回到windows电脑,可以看到有boot分区,在分区上新建ssh空文件,然后插回树莓派。</p>
+
+<p>启动完后用ssh连接前面设置的ip，发现可以登陆了，用户名是pi,默认的密码是raspberry</p>
+
+<h3 id="修改软件源">修改软件源：</h3>
+
+<p>上面安装必要的软件时会发现下载非常慢，修改下源，会加速很多。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/sources.list</code></pre></div>
+<p>清空，替换为</p>
+
+<pre><code>deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/apt/sources.list.d/raspi.list</code></pre></div>
+<p>清空，替换为</p>
+
+<pre><code>deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ buster main
+</code></pre>
+
+<p>然后执行更新指令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update
+sudo apt upgrade
+sudo apt dist-upgrade</code></pre></div>
+<h2 id="安装各种服务">安装各种服务</h2>
+
+<p>到这里就有一台基本的服务器可以用了，下面给它装上各种服务，用起来。</p>
+
+<h3 id="无线打印机">无线打印机</h3>
+
+<p>家里一台hp laserjet m1136打印机，使用usb连接电脑的，可以改造成WiFi方式的了。</p>
+
+<p>安装cups服务</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install cups</code></pre></div>
+<p>将用户加入到 lpadmin 用户组，然后开启 CUPS 的远程访问权限。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo usermod -a -G lpadmin pi
+sudo cupsctl --remote-any</code></pre></div>
+<p>这台打印机没有直接的驱动，还需要先安装下可用的驱动，这个查了不少资料，在这里得到答案<a href="http://foo2xqx.rkkda.com/">http://foo2xqx.rkkda.com/</a></p>
+
+<p>按以下步骤来安装:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget -O foo2zjs.tar.gz http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+tar zxvf  foo2zjs.tar.gz
+cd foo2zjs
+make
+sudo make install
+sudo make cups</code></pre></div>
+<p>在网页上打开<a href="http://192.168.2.6:631,会看到一个配置网页">http://192.168.2.6:631,会看到一个配置网页</a></p>
+
+<p>选择Administration -&gt; Add printer</p>
+
+<p>会看到默认会有m1136的信息，记得把Share this printer打开。</p>
+
+<p>在model选择时要选HP-LaserJet 1102 foo2xqx 这条</p>
+
+<p>完成后windows上选加入打印机就可以找到这台了</p>
+
+<p>大概能用，还有不少缺陷：</p>
+
+<ul>
+<li>只能打印</li>
+<li>有时发出打印指令会无效，需要重启下打印机</li>
+<li>android发起的打印有时会只打半张
+<br /></li>
+</ul>
+
+<h3 id="webssh服务">webssh服务</h3>
+
+<p>可以在网页上连接ssh，适合在没有ssh工具的地方使用ssh</p>
+
+<p>官方地址： <a href="https://pypi.org/project/webssh/">https://pypi.org/project/webssh/</a></p>
+
+<p>安装不复杂，参照官网即可</p>
+
+<h3 id="shiori-网络书签服务">shiori 网络书签服务</h3>
+
+<p>先安装golang的对应版本</p>
+
+<p>在<a href="这里">https://golang.org/dl/</a>找到找到最新的对应版本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://dl.google.com/go/go1.13.5.linux-armv6l.tar.gz
+tar xvzf go1.13.5.linux-armv61.tar.gz
+sudo ls -s ~/go/bin/go /usr/bin/go
+go version</code></pre></div>
+<p>安装正确的话会显示版本号,超过1.12即可
+go version go1.13.5 linux/arm</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go get -u -v github.com/go-shiori/shiori
+cd go/src/github.com/go-shiori/shiori/
+go install
+sudo ln -s ~/go/bin/shiori /usr/bin/shiori</code></pre></div>
+<p>启动服务</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">shiori serve</code></pre></div>
+<p>这时就可以访问<a href="http://localhost:8080看到登陆页了">http://localhost:8080看到登陆页了</a></p>
+
+<p>默认账号密码是shiori gopher</p>
+
+<p>进去后在修改页添加自己的账号密码，这时上面这个账号就会自动失效了。</p>
+
+<h3 id="dns服务">dns服务</h3>
+
+<p>上面的服务需要内外网都能访问，配置好自己的域名解析后，外网访问没有问题。但内外就成了问题，因为现在的宽带无法直接访问自己的对外ip。</p>
+
+<p>这个通过一个自己的dns服务来解决。</p>
+
+<p>安装 dnsmasq</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo get install dnsmasq</code></pre></div>
+<p>配置/etc/dnsmasq.conf</p>
+
+<p>清空配置并复制以下内如</p>
+
+<pre><code>resolv-file=/etc/my_dns.conf
+strict-order
+cache-size=10000
+listen-address=127.0.0.1,192.168.2.6
+</code></pre>
+
+<p>编辑/etc/my_dns.conf</p>
+
+<pre><code>nameserver 127.0.0.1
+nameserver 114.114.114.114
+nameserver 8.8.8.8
+</code></pre>
+
+<p>这样就成功完成了dns服务的搭建，但我们还需要将内网的域名解析到192.168.2.6</p>
+
+<p>修改/etc/hosts 增加</p>
+
+<pre><code>192.168.2.7 home.xxx.xxx
+</code></pre>
+
+<p>使用192.168.2.6为dns服务的内网机器都可以通过域名使用上面的服务了。</p>
+
+<p>更方便起见，修改路由的dns服务为192.168.2.6，这样家里自动获取ip的机器就都可以正常使用服务了。</p>
+
+<h2 id="自动启动各个服务">自动启动各个服务</h2>
+
+<p>机器重启后，让上面的服务能够启动启动</p>
+
+<p>修改 /etc/rc.local</p>
+
+<p>在exit 0这行之前加入要执行的指令，如</p>
+
+<p>su pi -c &ldquo;wssh &ndash;port=8888 2&gt;&amp;1 &amp;&rdquo;</p>
+
+<p>pi表示启动的用户 -c表示启动完毕后退出改用户</p>
+
+<h2 id="其他一些杂项记录">其他一些杂项记录：</h2>
+
+<p>vim的右键点击不是复制，而是进入了visual模式，改回复制的方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /usr/share/vim/vim80/defaults.vim</code></pre></div>
+<p>在mouse=a的=前面加个-, 如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">has</span>(<span style="color:#e6db74">&#39;mouse&#39;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">mouse</span>-=<span style="color:#a6e22e">a</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endif</span></code></pre></div><ul class="pa0">
+  
+</ul>
+<div class="mt6">
+      
+      <div id="commento"></div>
+<script defer src="https://cdn.commento.io/js/commento.js"></script>
+
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">What&#39;s in this post</p>
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#烧录系统">烧录系统</a>
+<ul>
+<li><a href="#首次安装使用noobs方式">首次安装使用NOOBS方式:</a></li>
+<li><a href="#使用usb启动">使用usb启动</a></li>
+</ul></li>
+<li><a href="#配置系统">配置系统</a>
+<ul>
+<li><a href="#网络配置">网络配置</a></li>
+<li><a href="#开启ssh">开启ssh</a></li>
+<li><a href="#修改软件源">修改软件源：</a></li>
+</ul></li>
+<li><a href="#安装各种服务">安装各种服务</a>
+<ul>
+<li><a href="#无线打印机">无线打印机</a></li>
+<li><a href="#webssh服务">webssh服务</a></li>
+<li><a href="#shiori-网络书签服务">shiori 网络书签服务</a></li>
+<li><a href="#dns服务">dns服务</a></li>
+</ul></li>
+<li><a href="#自动启动各个服务">自动启动各个服务</a></li>
+<li><a href="#其他一些杂项记录">其他一些杂项记录：</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-blue bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://muliao.github.io" >
+    &copy; 2019 Muliao&#39;s Blog
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
