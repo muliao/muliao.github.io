@@ -34,12 +34,13 @@
 网络打印服务 让只有usb连接的打印机可以使用网络访问，无线起来。
 webssh 让设备可以使用浏览器来连接树莓派。
 shiori 网络书签服务,有了自己的书签服务，就不担心网络上那些书签服务经常关门的问题了。
+tiny tiny rss服务
 dns服务 让内外网使用同一个域名访问树莓派上的服务。
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://muliao.github.io/post/how_to_use_pi/" />
 <meta property="article:published_time" content="2019-12-07T19:51:08+08:00" />
-<meta property="article:modified_time" content="2019-12-07T19:51:08+08:00" />
+<meta property="article:modified_time" content="2019-12-28T22:46:04+08:00" />
 <meta itemprop="name" content="使用树莓派记录">
 <meta itemprop="description" content="购买了个树莓派，记录下使用的过程，也为大家提供点帮助。
 
@@ -49,13 +50,14 @@ dns服务 让内外网使用同一个域名访问树莓派上的服务。
 网络打印服务 让只有usb连接的打印机可以使用网络访问，无线起来。
 webssh 让设备可以使用浏览器来连接树莓派。
 shiori 网络书签服务,有了自己的书签服务，就不担心网络上那些书签服务经常关门的问题了。
+tiny tiny rss服务
 dns服务 让内外网使用同一个域名访问树莓派上的服务。
 ">
 
 
 <meta itemprop="datePublished" content="2019-12-07T19:51:08&#43;08:00" />
-<meta itemprop="dateModified" content="2019-12-07T19:51:08&#43;08:00" />
-<meta itemprop="wordCount" content="443">
+<meta itemprop="dateModified" content="2019-12-28T22:46:04&#43;08:00" />
+<meta itemprop="wordCount" content="724">
 
 
 
@@ -70,6 +72,7 @@ dns服务 让内外网使用同一个域名访问树莓派上的服务。
 网络打印服务 让只有usb连接的打印机可以使用网络访问，无线起来。
 webssh 让设备可以使用浏览器来连接树莓派。
 shiori 网络书签服务,有了自己的书签服务，就不担心网络上那些书签服务经常关门的问题了。
+tiny tiny rss服务
 dns服务 让内外网使用同一个域名访问树莓派上的服务。
 "/>
 
@@ -158,8 +161,8 @@ dns服务 让内外网使用同一个域名访问树莓派上的服务。
       <time class="f6 mv4 dib tracked" datetime="2019-12-07T19:51:08&#43;08:00">December 7, 2019</time>
       
       
-        <span class="f6 mv4 dib tracked"> - 3 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 443 words</span>
+        <span class="f6 mv4 dib tracked"> - 4 minutes read</span>
+        <span class="f6 mv4 dib tracked"> - 724 words</span>
       
     </header>
 
@@ -171,6 +174,7 @@ dns服务 让内外网使用同一个域名访问树莓派上的服务。
 <li>网络打印服务 让只有usb连接的打印机可以使用网络访问，无线起来。</li>
 <li>webssh 让设备可以使用浏览器来连接树莓派。</li>
 <li>shiori 网络书签服务,有了自己的书签服务，就不担心网络上那些书签服务经常关门的问题了。</li>
+<li>tiny tiny rss服务</li>
 <li>dns服务 让内外网使用同一个域名访问树莓派上的服务。</li>
 </ul>
 
@@ -423,6 +427,111 @@ sudo ln -s ~/go/bin/shiori /usr/bin/shiori</code></pre></div>
 
 <p>进去后在修改页添加自己的账号密码，这时上面这个账号就会自动失效了。</p>
 
+<h3 id="tiny-tiny-rss服务">tiny tiny rss服务</h3>
+
+<p>ttrss服务是php站实现的，且使用mysql数据库，因此需要先安装php,nginx以及mysql服务</p>
+
+<h4 id="安装php">安装php</h4>
+
+<p>安装比较新的php版本需要使用Raspbian的测试分支源buster,通过以下操作加入到源:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo vi /etc/apt/sources.list.d/10-buster.list</code></pre></div>
+<p>加入这行</p>
+
+<pre><code>deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi
+</code></pre>
+
+<p>现在，通过添加此内容并-t buster在我们的apt-get命令中进行引用，它将使用Buster发行版中可用的较新版本的文件，该版本并非100％稳定。为此，我们需要创建一个无效的首选项文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo vi /etc/apt/preferences.d/10-buster</code></pre></div>
+<p>加入以下内容</p>
+
+<pre><code>Package: *
+Pin: release n=stretch
+Pin-Priority: 900
+
+Package: *
+Pin: release n=buster
+Pin-Priority: 750
+</code></pre>
+
+<p>更新源</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update
+sudo apt upgrade</code></pre></div>
+<p>此时可以安装php7.3了</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install -t buster php7.3 php7.3-curl php7.3-gd php7.3-fpm php7.3-cli php7.3-opcache php7.3-mbstring php7.3-xml php7.3-zip</code></pre></div>
+<p>安装完毕后，查看php是否安装成功</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">php --version</code></pre></div>
+<h4 id="安装nginx">安装nginx</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install -t buster nginx</code></pre></div>
+<h4 id="安装mysql">安装mysql</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install mariadb-server</code></pre></div>
+<p>配置管理员密码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mysql_secure_installation</code></pre></div>
+<p>然后根据提示修改。</p>
+
+<h4 id="安装ttrss">安装ttrss</h4>
+
+<p>网站文件打算建立在/home/pi/www/html/tt-rss下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /home/pi/www/html
+cd /home/pi/www/html
+git clone https://tt-rss.org/git/tt-rss.git ttrss
+sudo chown -R www-data:www-data ttrss</code></pre></div>
+<p>修改nginx的配置文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/nginx/sites-available/ttrss</code></pre></div>
+<p>加入以下内容:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">server {
+    #listen 80;
+    index index.html index.php;
+
+    ## Begin - Server Info
+    root /home/pi/www/html/tt-rss;
+    server_name localhost;
+    ## End - Server Info
+
+    ## Begin - Index
+    # for subfolders, simply adjust:
+    # `location /subfolder {`
+    # and the rewrite to use `/subfolder/index.php`
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    ## End - Index
+
+    ## Begin - PHP
+    location ~ \.php$ {
+        # Choose either a socket or TCP/IP address
+        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        # fastcgi_pass 127.0.0.1:9000;
+
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root/$fastcgi_script_name;
+    }
+    ## End - PHP
+
+    ## Begin - Security
+    # deny all direct access for these folders
+    location ~* /(.git|cache|bin|logs|backups|tests)/.*$ { return 403; }
+    # deny running scripts inside core system folders
+    location ~* /(system|vendor)/.*\.(txt|xml|md|html|yaml|php|pl|py|cgi|twig|sh|bat)$ { return 403; }
+    # deny running scripts inside user folder
+    location ~* /user/.*\.(txt|md|yaml|php|pl|py|cgi|twig|sh|bat)$ { return 403; }
+    # deny access to specific files in the root folder
+    location ~ /(LICENSE.txt|composer.lock|composer.json|nginx.conf|web.config|htaccess.txt|\.htaccess) { return 403; }
+    ## End - Security
+}</code></pre></div>
+<p>保持并执行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/ttrss /etc/nginx/sites-enabled/ttrss</code></pre></div>
+<p>重启nginx服务</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo service php7.3-fpm restart
+sudo service nginx restart</code></pre></div>
+<p>服务就安装完毕了，需要打开网页来进行配置。</p>
+
+<p>配置过程没有截图,就是配置数据库的账号密码,按照mysql安装时的设置即可。</p>
+
+<p>配置完毕后刷新页面，使用默认的账号密码登录:admin/password</p>
+
 <h3 id="dns服务">dns服务</h3>
 
 <p>上面的服务需要内外网都能访问，配置好自己的域名解析后，外网访问没有问题。但内外就成了问题，因为现在的宽带无法直接访问自己的对外ip。</p>
@@ -511,6 +620,13 @@ nameserver 8.8.8.8
 <li><a href="#无线打印机">无线打印机</a></li>
 <li><a href="#webssh服务">webssh服务</a></li>
 <li><a href="#shiori-网络书签服务">shiori 网络书签服务</a></li>
+<li><a href="#tiny-tiny-rss服务">tiny tiny rss服务</a>
+<ul>
+<li><a href="#安装php">安装php</a></li>
+<li><a href="#安装nginx">安装nginx</a></li>
+<li><a href="#安装mysql">安装mysql</a></li>
+<li><a href="#安装ttrss">安装ttrss</a></li>
+</ul></li>
 <li><a href="#dns服务">dns服务</a></li>
 </ul></li>
 <li><a href="#自动启动各个服务">自动启动各个服务</a></li>

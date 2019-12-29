@@ -34,6 +34,7 @@
 &lt;li&gt;网络打印服务 让只有usb连接的打印机可以使用网络访问，无线起来。&lt;/li&gt;
 &lt;li&gt;webssh 让设备可以使用浏览器来连接树莓派。&lt;/li&gt;
 &lt;li&gt;shiori 网络书签服务,有了自己的书签服务，就不担心网络上那些书签服务经常关门的问题了。&lt;/li&gt;
+&lt;li&gt;tiny tiny rss服务&lt;/li&gt;
 &lt;li&gt;dns服务 让内外网使用同一个域名访问树莓派上的服务。&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
@@ -108,7 +109,7 @@
       
       <guid>https://muliao.github.io/contact/</guid>
       <description>Cantact me!
-你的名字 邮箱地址 需要邮箱地址。  信息   </description>
+你的名字电邮地址需要电子邮件地址。信息</description>
     </item>
     
   </channel>
